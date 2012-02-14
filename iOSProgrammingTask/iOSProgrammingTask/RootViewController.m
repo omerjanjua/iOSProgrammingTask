@@ -1,14 +1,15 @@
 //
-//  PublisherViewController.m
+//  RootViewController.m
 //  iOSProgrammingTask
 //
 //  Created by Omer Janjua on 14/02/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "PublisherViewController.h"
+#import "RootViewController.h"
 
-@implementation PublisherViewController
+
+@implementation RootViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
