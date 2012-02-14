@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Author, Publisher, Review;
 
 @interface Book : NSManagedObject
 
 @property (nonatomic, retain) NSString * authors;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * price;
+@property (nonatomic, retain) NSDecimalNumber * price;
 @property (nonatomic, retain) NSString * publishers;
 @property (nonatomic, retain) NSDate * releaseDate;
 @property (nonatomic, retain) NSString * reviews;
@@ -25,16 +26,16 @@
 
 @interface Book (CoreDataGeneratedAccessors)
 
-- (void)addAuthorObject:(NSManagedObject *)value;
-- (void)removeAuthorObject:(NSManagedObject *)value;
+- (void)addAuthorObject:(Author *)value;
+- (void)removeAuthorObject:(Author *)value;
 - (void)addAuthor:(NSSet *)values;
 - (void)removeAuthor:(NSSet *)values;
-- (void)addPublisherObject:(NSManagedObject *)value;
-- (void)removePublisherObject:(NSManagedObject *)value;
+- (void)addPublisherObject:(Publisher *)value;
+- (void)removePublisherObject:(Publisher *)value;
 - (void)addPublisher:(NSSet *)values;
 - (void)removePublisher:(NSSet *)values;
-- (void)addReviewObject:(NSManagedObject *)value;
-- (void)removeReviewObject:(NSManagedObject *)value;
+- (void)addReviewObject:(Review *)value;
+- (void)removeReviewObject:(Review *)value;
 - (void)addReview:(NSSet *)values;
 - (void)removeReview:(NSSet *)values;
 @end

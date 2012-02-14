@@ -7,6 +7,9 @@
 //
 
 #import "Book.h"
+#import "Author.h"
+#import "Publisher.h"
+#import "Review.h"
 
 
 @implementation Book

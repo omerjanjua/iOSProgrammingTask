@@ -14,14 +14,22 @@
 		170EAE9614EA82F000267631 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 170EAE9414EA82F000267631 /* InfoPlist.strings */; };
 		170EAE9814EA82F000267631 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAE9714EA82F000267631 /* main.m */; };
 		170EAE9C14EA82F000267631 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAE9B14EA82F000267631 /* AppDelegate.m */; };
-		170EAE9F14EA82F000267631 /* iOSProgrammingTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 170EAE9D14EA82F000267631 /* iOSProgrammingTask.xcdatamodeld */; };
-		173BA0CE14EAADCD008BE51F /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA0CD14EAADCD008BE51F /* Book.m */; };
-		173BA0D114EAADCE008BE51F /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA0D014EAADCE008BE51F /* Review.m */; };
-		173BA0D414EAADCE008BE51F /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA0D314EAADCE008BE51F /* Author.m */; };
-		173BA0DB14EAAEDA008BE51F /* Author.json in Resources */ = {isa = PBXBuildFile; fileRef = 173BA0D814EAAEDA008BE51F /* Author.json */; };
-		173BA0DC14EAAEDA008BE51F /* Books.json in Resources */ = {isa = PBXBuildFile; fileRef = 173BA0D914EAAEDA008BE51F /* Books.json */; };
-		173BA0DD14EAAEDA008BE51F /* Publishers.json in Resources */ = {isa = PBXBuildFile; fileRef = 173BA0DA14EAAEDA008BE51F /* Publishers.json */; };
-		173BA0FB14EAB705008BE51F /* Publisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA0FA14EAB705008BE51F /* Publisher.m */; };
+		173BA10114EABBC3008BE51F /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10014EABBC3008BE51F /* Author.m */; };
+		173BA10414EABBC4008BE51F /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10314EABBC4008BE51F /* Book.m */; };
+		173BA10714EABBC4008BE51F /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10614EABBC4008BE51F /* Review.m */; };
+		173BA10A14EABBC4008BE51F /* Publisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10914EABBC4008BE51F /* Publisher.m */; };
+		173BA11314EABC06008BE51F /* iOSProgrammingTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10C14EABC06008BE51F /* iOSProgrammingTask.xcdatamodeld */; };
+		173BA11414EABC06008BE51F /* Author.json in Resources */ = {isa = PBXBuildFile; fileRef = 173BA10F14EABC06008BE51F /* Author.json */; };
+		173BA11514EABC06008BE51F /* Books.json in Resources */ = {isa = PBXBuildFile; fileRef = 173BA11014EABC06008BE51F /* Books.json */; };
+		173BA11614EABC06008BE51F /* Publishers.json in Resources */ = {isa = PBXBuildFile; fileRef = 173BA11114EABC06008BE51F /* Publishers.json */; };
+		173BA11A14EABD0B008BE51F /* BookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA11814EABD0B008BE51F /* BookViewController.m */; };
+		173BA11F14EABD36008BE51F /* AuthorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA11D14EABD36008BE51F /* AuthorViewController.m */; };
+		173BA12414EABD5A008BE51F /* PublisherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA12214EABD5A008BE51F /* PublisherViewController.m */; };
+		173BA12914EABD7C008BE51F /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA12714EABD7C008BE51F /* ReviewViewController.m */; };
+		173BA12F14EABD97008BE51F /* AuthorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA12B14EABD97008BE51F /* AuthorView.xib */; };
+		173BA13014EABD97008BE51F /* BookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA12C14EABD97008BE51F /* BookView.xib */; };
+		173BA13114EABD97008BE51F /* PublisherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA12D14EABD97008BE51F /* PublisherView.xib */; };
+		173BA13214EABD97008BE51F /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA12E14EABD97008BE51F /* ReviewView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +44,6 @@
 		170EAE9914EA82F000267631 /* iOSProgrammingTask-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOSProgrammingTask-Prefix.pch"; sourceTree = "<group>"; };
 		170EAE9A14EA82F000267631 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		170EAE9B14EA82F000267631 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		170EAE9E14EA82F000267631 /* iOSProgrammingTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSProgrammingTask.xcdatamodel; sourceTree = "<group>"; };
 		170EAEB314EA89A100267631 /* NSAttributeDescription+MagicalDataImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributeDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
 		170EAEB414EA89A100267631 /* NSAttributeDescription+MagicalDataImport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributeDescription+MagicalDataImport.m"; sourceTree = "<group>"; };
 		170EAEB514EA89A100267631 /* NSEntityDescription+MagicalDataImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSEntityDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
@@ -69,17 +76,30 @@
 		170EAED014EA89A100267631 /* MRCoreDataAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRCoreDataAction.m; sourceTree = "<group>"; };
 		170EAED214EA89B600267631 /* JSONKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		170EAED314EA89B600267631 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		173BA0CC14EAADCD008BE51F /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
-		173BA0CD14EAADCD008BE51F /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
-		173BA0CF14EAADCE008BE51F /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
-		173BA0D014EAADCE008BE51F /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
-		173BA0D214EAADCE008BE51F /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
-		173BA0D314EAADCE008BE51F /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
-		173BA0D814EAAEDA008BE51F /* Author.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Author.json; sourceTree = "<group>"; };
-		173BA0D914EAAEDA008BE51F /* Books.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Books.json; sourceTree = "<group>"; };
-		173BA0DA14EAAEDA008BE51F /* Publishers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Publishers.json; sourceTree = "<group>"; };
-		173BA0F914EAB704008BE51F /* Publisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publisher.h; sourceTree = "<group>"; };
-		173BA0FA14EAB705008BE51F /* Publisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Publisher.m; sourceTree = "<group>"; };
+		173BA0FF14EABBC3008BE51F /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
+		173BA10014EABBC3008BE51F /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
+		173BA10214EABBC4008BE51F /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		173BA10314EABBC4008BE51F /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		173BA10514EABBC4008BE51F /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		173BA10614EABBC4008BE51F /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
+		173BA10814EABBC4008BE51F /* Publisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publisher.h; sourceTree = "<group>"; };
+		173BA10914EABBC4008BE51F /* Publisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Publisher.m; sourceTree = "<group>"; };
+		173BA10D14EABC06008BE51F /* iOSProgrammingTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSProgrammingTask.xcdatamodel; sourceTree = "<group>"; };
+		173BA10F14EABC06008BE51F /* Author.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Author.json; sourceTree = "<group>"; };
+		173BA11014EABC06008BE51F /* Books.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Books.json; sourceTree = "<group>"; };
+		173BA11114EABC06008BE51F /* Publishers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Publishers.json; sourceTree = "<group>"; };
+		173BA11714EABD0B008BE51F /* BookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookViewController.h; sourceTree = "<group>"; };
+		173BA11814EABD0B008BE51F /* BookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookViewController.m; sourceTree = "<group>"; };
+		173BA11C14EABD36008BE51F /* AuthorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorViewController.h; sourceTree = "<group>"; };
+		173BA11D14EABD36008BE51F /* AuthorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorViewController.m; sourceTree = "<group>"; };
+		173BA12114EABD5A008BE51F /* PublisherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublisherViewController.h; sourceTree = "<group>"; };
+		173BA12214EABD5A008BE51F /* PublisherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublisherViewController.m; sourceTree = "<group>"; };
+		173BA12614EABD7C008BE51F /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
+		173BA12714EABD7C008BE51F /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
+		173BA12B14EABD97008BE51F /* AuthorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthorView.xib; sourceTree = "<group>"; };
+		173BA12C14EABD97008BE51F /* BookView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookView.xib; sourceTree = "<group>"; };
+		173BA12D14EABD97008BE51F /* PublisherView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublisherView.xib; sourceTree = "<group>"; };
+		173BA12E14EABD97008BE51F /* ReviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,10 +150,10 @@
 		170EAE9114EA82F000267631 /* iOSProgrammingTask */ = {
 			isa = PBXGroup;
 			children = (
-				173BA0CA14EAAD93008BE51F /* Classes */,
-				173BA0C814EAAC2D008BE51F /* Resources */,
+				173BA0FC14EABBAA008BE51F /* Classes */,
 				170EAE9A14EA82F000267631 /* AppDelegate.h */,
 				170EAE9B14EA82F000267631 /* AppDelegate.m */,
+				173BA10B14EABC06008BE51F /* Resources */,
 				170EAE9214EA82F000267631 /* Supporting Files */,
 			);
 			path = iOSProgrammingTask;
@@ -214,62 +234,74 @@
 			path = "../../../Projects/GSK-Seretide-DutchDeepDive/trunk/client/SeretideDutchDeepDive/SeretideDutchDeepDive/Frameworks/JSONKit";
 			sourceTree = "<group>";
 		};
-		173BA0C514EAABE0008BE51F /* Views */ = {
+		173BA0FC14EABBAA008BE51F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				173BA0FD14EABBAA008BE51F /* Controllers */,
+				173BA0FE14EABBAA008BE51F /* Model */,
 			);
-			name = Views;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		173BA0C714EAABE5008BE51F /* Controllers */ = {
+		173BA0FD14EABBAA008BE51F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				173BA11C14EABD36008BE51F /* AuthorViewController.h */,
+				173BA11D14EABD36008BE51F /* AuthorViewController.m */,
+				173BA11714EABD0B008BE51F /* BookViewController.h */,
+				173BA11814EABD0B008BE51F /* BookViewController.m */,
+				173BA12114EABD5A008BE51F /* PublisherViewController.h */,
+				173BA12214EABD5A008BE51F /* PublisherViewController.m */,
+				173BA12614EABD7C008BE51F /* ReviewViewController.h */,
+				173BA12714EABD7C008BE51F /* ReviewViewController.m */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		173BA0C814EAAC2D008BE51F /* Resources */ = {
+		173BA0FE14EABBAA008BE51F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				173BA0C514EAABE0008BE51F /* Views */,
-				173BA0C914EAAD5A008BE51F /* JSON */,
-				170EAE9D14EA82F000267631 /* iOSProgrammingTask.xcdatamodeld */,
+				173BA0FF14EABBC3008BE51F /* Author.h */,
+				173BA10014EABBC3008BE51F /* Author.m */,
+				173BA10214EABBC4008BE51F /* Book.h */,
+				173BA10314EABBC4008BE51F /* Book.m */,
+				173BA10814EABBC4008BE51F /* Publisher.h */,
+				173BA10914EABBC4008BE51F /* Publisher.m */,
+				173BA10514EABBC4008BE51F /* Review.h */,
+				173BA10614EABBC4008BE51F /* Review.m */,
 			);
-			name = Resources;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		173BA0C914EAAD5A008BE51F /* JSON */ = {
+		173BA10B14EABC06008BE51F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				173BA0D814EAAEDA008BE51F /* Author.json */,
-				173BA0D914EAAEDA008BE51F /* Books.json */,
-				173BA0DA14EAAEDA008BE51F /* Publishers.json */,
+				173BA11214EABC06008BE51F /* Views */,
+				173BA10E14EABC06008BE51F /* JSON */,
+				173BA10C14EABC06008BE51F /* iOSProgrammingTask.xcdatamodeld */,
 			);
-			name = JSON;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		173BA0CA14EAAD93008BE51F /* Classes */ = {
+		173BA10E14EABC06008BE51F /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				173BA0C714EAABE5008BE51F /* Controllers */,
-				173BA0CB14EAADAA008BE51F /* Model */,
+				173BA10F14EABC06008BE51F /* Author.json */,
+				173BA11014EABC06008BE51F /* Books.json */,
+				173BA11114EABC06008BE51F /* Publishers.json */,
 			);
-			name = Classes;
+			path = JSON;
 			sourceTree = "<group>";
 		};
-		173BA0CB14EAADAA008BE51F /* Model */ = {
+		173BA11214EABC06008BE51F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				173BA0D214EAADCE008BE51F /* Author.h */,
-				173BA0D314EAADCE008BE51F /* Author.m */,
-				173BA0CF14EAADCE008BE51F /* Review.h */,
-				173BA0D014EAADCE008BE51F /* Review.m */,
-				173BA0CC14EAADCD008BE51F /* Book.h */,
-				173BA0CD14EAADCD008BE51F /* Book.m */,
-				173BA0F914EAB704008BE51F /* Publisher.h */,
-				173BA0FA14EAB705008BE51F /* Publisher.m */,
+				173BA12B14EABD97008BE51F /* AuthorView.xib */,
+				173BA12C14EABD97008BE51F /* BookView.xib */,
+				173BA12D14EABD97008BE51F /* PublisherView.xib */,
+				173BA12E14EABD97008BE51F /* ReviewView.xib */,
 			);
-			name = Model;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,9 +355,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				170EAE9614EA82F000267631 /* InfoPlist.strings in Resources */,
-				173BA0DB14EAAEDA008BE51F /* Author.json in Resources */,
-				173BA0DC14EAAEDA008BE51F /* Books.json in Resources */,
-				173BA0DD14EAAEDA008BE51F /* Publishers.json in Resources */,
+				173BA11414EABC06008BE51F /* Author.json in Resources */,
+				173BA11514EABC06008BE51F /* Books.json in Resources */,
+				173BA11614EABC06008BE51F /* Publishers.json in Resources */,
+				173BA12F14EABD97008BE51F /* AuthorView.xib in Resources */,
+				173BA13014EABD97008BE51F /* BookView.xib in Resources */,
+				173BA13114EABD97008BE51F /* PublisherView.xib in Resources */,
+				173BA13214EABD97008BE51F /* ReviewView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,11 +374,15 @@
 			files = (
 				170EAE9814EA82F000267631 /* main.m in Sources */,
 				170EAE9C14EA82F000267631 /* AppDelegate.m in Sources */,
-				170EAE9F14EA82F000267631 /* iOSProgrammingTask.xcdatamodeld in Sources */,
-				173BA0CE14EAADCD008BE51F /* Book.m in Sources */,
-				173BA0D114EAADCE008BE51F /* Review.m in Sources */,
-				173BA0D414EAADCE008BE51F /* Author.m in Sources */,
-				173BA0FB14EAB705008BE51F /* Publisher.m in Sources */,
+				173BA10114EABBC3008BE51F /* Author.m in Sources */,
+				173BA10414EABBC4008BE51F /* Book.m in Sources */,
+				173BA10714EABBC4008BE51F /* Review.m in Sources */,
+				173BA10A14EABBC4008BE51F /* Publisher.m in Sources */,
+				173BA11314EABC06008BE51F /* iOSProgrammingTask.xcdatamodeld in Sources */,
+				173BA11A14EABD0B008BE51F /* BookViewController.m in Sources */,
+				173BA11F14EABD36008BE51F /* AuthorViewController.m in Sources */,
+				173BA12414EABD5A008BE51F /* PublisherViewController.m in Sources */,
+				173BA12914EABD7C008BE51F /* ReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,12 +489,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		170EAE9D14EA82F000267631 /* iOSProgrammingTask.xcdatamodeld */ = {
+		173BA10C14EABC06008BE51F /* iOSProgrammingTask.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				170EAE9E14EA82F000267631 /* iOSProgrammingTask.xcdatamodel */,
+				173BA10D14EABC06008BE51F /* iOSProgrammingTask.xcdatamodel */,
 			);
-			currentVersion = 170EAE9E14EA82F000267631 /* iOSProgrammingTask.xcdatamodel */;
+			currentVersion = 173BA10D14EABC06008BE51F /* iOSProgrammingTask.xcdatamodel */;
 			path = iOSProgrammingTask.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
