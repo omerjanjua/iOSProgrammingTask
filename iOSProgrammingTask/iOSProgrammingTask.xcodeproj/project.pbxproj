@@ -36,7 +36,6 @@
 		173BA15914EAC16B008BE51F /* EditBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA15714EAC16B008BE51F /* EditBookViewController.m */; };
 		173BA15C14EAC185008BE51F /* AddBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA15B14EAC185008BE51F /* AddBookView.xib */; };
 		173BA15E14EAC190008BE51F /* EditBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA15D14EAC190008BE51F /* EditBookView.xib */; };
-		173BA16714EAC92E008BE51F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA16614EAC92D008BE51F /* RootViewController.m */; };
 		173BA16914EACB78008BE51F /* MagicalRecordHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAECD14EA89A100267631 /* MagicalRecordHelpers.m */; };
 		173BA16A14EACBAF008BE51F /* MRCoreDataAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAED014EA89A100267631 /* MRCoreDataAction.m */; };
 		173BA16B14EACBF9008BE51F /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAECA14EA89A100267631 /* NSPersistentStoreCoordinator+MagicalRecord.m */; };
@@ -52,6 +51,7 @@
 		173BA17514EACC3C008BE51F /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAEB614EA89A100267631 /* NSEntityDescription+MagicalDataImport.m */; };
 		173BA17614EACC3E008BE51F /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAEB414EA89A100267631 /* NSAttributeDescription+MagicalDataImport.m */; };
 		173BA17714EACC5A008BE51F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAED314EA89B600267631 /* JSONKit.m */; };
+		173F92C114EBBA7F00C6EF49 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173F92C014EBBA7F00C6EF49 /* MainWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,8 +131,7 @@
 		173BA15714EAC16B008BE51F /* EditBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBookViewController.m; sourceTree = "<group>"; };
 		173BA15B14EAC185008BE51F /* AddBookView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddBookView.xib; sourceTree = "<group>"; };
 		173BA15D14EAC190008BE51F /* EditBookView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditBookView.xib; sourceTree = "<group>"; };
-		173BA16514EAC92D008BE51F /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		173BA16614EAC92D008BE51F /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		173F92C014EBBA7F00C6EF49 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,8 +185,7 @@
 				173BA0FC14EABBAA008BE51F /* Classes */,
 				170EAE9A14EA82F000267631 /* AppDelegate.h */,
 				170EAE9B14EA82F000267631 /* AppDelegate.m */,
-				173BA16514EAC92D008BE51F /* RootViewController.h */,
-				173BA16614EAC92D008BE51F /* RootViewController.m */,
+				173F92C014EBBA7F00C6EF49 /* MainWindow.xib */,
 				173BA10B14EABC06008BE51F /* Resources */,
 				170EAE9214EA82F000267631 /* Supporting Files */,
 			);
@@ -409,6 +407,7 @@
 				173BA13E14EABF91008BE51F /* BookTableCellView.xib in Resources */,
 				173BA15C14EAC185008BE51F /* AddBookView.xib in Resources */,
 				173BA15E14EAC190008BE51F /* EditBookView.xib in Resources */,
+				173F92C114EBBA7F00C6EF49 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +432,6 @@
 				173BA13B14EABF70008BE51F /* BookTableCellViewController.m in Sources */,
 				173BA15414EAC149008BE51F /* AddBookViewController.m in Sources */,
 				173BA15914EAC16B008BE51F /* EditBookViewController.m in Sources */,
-				173BA16714EAC92E008BE51F /* RootViewController.m in Sources */,
 				173BA16914EACB78008BE51F /* MagicalRecordHelpers.m in Sources */,
 				173BA16A14EACBAF008BE51F /* MRCoreDataAction.m in Sources */,
 				173BA16B14EACBF9008BE51F /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,

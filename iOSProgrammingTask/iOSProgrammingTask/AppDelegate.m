@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BookViewController.h"
 
 @implementation AppDelegate
 
@@ -15,10 +16,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{    
     [MagicalRecordHelpers setupCoreDataStack];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }
