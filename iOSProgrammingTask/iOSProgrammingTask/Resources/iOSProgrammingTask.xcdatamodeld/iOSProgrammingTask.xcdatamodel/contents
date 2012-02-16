@@ -13,9 +13,9 @@
         <attribute name="publishers" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="releaseDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="reviews" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="author" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Author" inverseName="bookAuthor" inverseEntity="Author" syncable="YES"/>
-        <relationship name="publisher" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Publisher" inverseName="bookPublisher" inverseEntity="Publisher" syncable="YES"/>
-        <relationship name="review" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Review" inverseName="bookReview" inverseEntity="Review" syncable="YES"/>
+        <relationship name="author" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Author" inverseName="bookAuthor" inverseEntity="Author" syncable="YES"/>
+        <relationship name="publisher" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Publisher" inverseName="bookPublisher" inverseEntity="Publisher" syncable="YES"/>
+        <relationship name="review" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="bookReview" inverseEntity="Review" syncable="YES"/>
     </entity>
     <entity name="Publisher" representedClassName="Publisher" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>

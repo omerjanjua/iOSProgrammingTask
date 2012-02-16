@@ -52,6 +52,11 @@
 		173BA17614EACC3E008BE51F /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAEB414EA89A100267631 /* NSAttributeDescription+MagicalDataImport.m */; };
 		173BA17714EACC5A008BE51F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAED314EA89B600267631 /* JSONKit.m */; };
 		173F92C114EBBA7F00C6EF49 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173F92C014EBBA7F00C6EF49 /* MainWindow.xib */; };
+		173F92D714EBE17200C6EF49 /* Book+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F92D614EBE17200C6EF49 /* Book+Additions.m */; };
+		173F930A14EC078500C6EF49 /* JSONSetupHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F930914EC078500C6EF49 /* JSONSetupHelpers.m */; };
+		173F930D14EC095200C6EF49 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F930C14EC095200C6EF49 /* SettingsManager.m */; };
+		173F931914EC188900C6EF49 /* Author+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F931814EC188900C6EF49 /* Author+Additions.m */; };
+		173F931C14EC22B800C6EF49 /* Publisher+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F931B14EC22B700C6EF49 /* Publisher+Additions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +137,17 @@
 		173BA15B14EAC185008BE51F /* AddBookView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddBookView.xib; sourceTree = "<group>"; };
 		173BA15D14EAC190008BE51F /* EditBookView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditBookView.xib; sourceTree = "<group>"; };
 		173F92C014EBBA7F00C6EF49 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		173F92D014EBE06B00C6EF49 /* Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Additions.h; sourceTree = "<group>"; };
+		173F92D514EBE17100C6EF49 /* Book+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Book+Additions.h"; sourceTree = "<group>"; };
+		173F92D614EBE17200C6EF49 /* Book+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Book+Additions.m"; sourceTree = "<group>"; };
+		173F930814EC078500C6EF49 /* JSONSetupHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSetupHelpers.h; sourceTree = "<group>"; };
+		173F930914EC078500C6EF49 /* JSONSetupHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONSetupHelpers.m; sourceTree = "<group>"; };
+		173F930B14EC095200C6EF49 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
+		173F930C14EC095200C6EF49 /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
+		173F931714EC188800C6EF49 /* Author+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Author+Additions.h"; sourceTree = "<group>"; };
+		173F931814EC188900C6EF49 /* Author+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Author+Additions.m"; sourceTree = "<group>"; };
+		173F931A14EC22B600C6EF49 /* Publisher+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Publisher+Additions.h"; sourceTree = "<group>"; };
+		173F931B14EC22B700C6EF49 /* Publisher+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Publisher+Additions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				173BA0FD14EABBAA008BE51F /* Controllers */,
+				173F930714EC076D00C6EF49 /* Helpers */,
 				173BA0FE14EABBAA008BE51F /* Model */,
 			);
 			path = Classes;
@@ -300,6 +317,7 @@
 		173BA0FE14EABBAA008BE51F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				173F92CF14EBE06200C6EF49 /* Additions */,
 				173BA0FF14EABBC3008BE51F /* Author.h */,
 				173BA10014EABBC3008BE51F /* Author.m */,
 				173BA10214EABBC4008BE51F /* Book.h */,
@@ -345,6 +363,32 @@
 			);
 			path = Views;
 			sourceTree = "<group>";
+		};
+		173F92CF14EBE06200C6EF49 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				173F92D014EBE06B00C6EF49 /* Additions.h */,
+				173F92D514EBE17100C6EF49 /* Book+Additions.h */,
+				173F92D614EBE17200C6EF49 /* Book+Additions.m */,
+				173F931714EC188800C6EF49 /* Author+Additions.h */,
+				173F931814EC188900C6EF49 /* Author+Additions.m */,
+				173F931A14EC22B600C6EF49 /* Publisher+Additions.h */,
+				173F931B14EC22B700C6EF49 /* Publisher+Additions.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		173F930714EC076D00C6EF49 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				173F930814EC078500C6EF49 /* JSONSetupHelpers.h */,
+				173F930914EC078500C6EF49 /* JSONSetupHelpers.m */,
+				173F930B14EC095200C6EF49 /* SettingsManager.h */,
+				173F930C14EC095200C6EF49 /* SettingsManager.m */,
+			);
+			name = Helpers;
+			path = iOSProgrammingTask/Classes/Helpers;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -447,6 +491,11 @@
 				173BA17514EACC3C008BE51F /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				173BA17614EACC3E008BE51F /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				173BA17714EACC5A008BE51F /* JSONKit.m in Sources */,
+				173F92D714EBE17200C6EF49 /* Book+Additions.m in Sources */,
+				173F930A14EC078500C6EF49 /* JSONSetupHelpers.m in Sources */,
+				173F930D14EC095200C6EF49 /* SettingsManager.m in Sources */,
+				173F931914EC188900C6EF49 /* Author+Additions.m in Sources */,
+				173F931C14EC22B800C6EF49 /* Publisher+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
