@@ -14,6 +14,7 @@
 		170EAE9614EA82F000267631 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 170EAE9414EA82F000267631 /* InfoPlist.strings */; };
 		170EAE9814EA82F000267631 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAE9714EA82F000267631 /* main.m */; };
 		170EAE9C14EA82F000267631 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAE9B14EA82F000267631 /* AppDelegate.m */; };
+		1722B24314EE6C18003732B8 /* BookTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1722B24214EE6C17003732B8 /* BookTableCell.m */; };
 		173BA10114EABBC3008BE51F /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10014EABBC3008BE51F /* Author.m */; };
 		173BA10414EABBC4008BE51F /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10314EABBC4008BE51F /* Book.m */; };
 		173BA10714EABBC4008BE51F /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10614EABBC4008BE51F /* Review.m */; };
@@ -30,8 +31,7 @@
 		173BA13014EABD97008BE51F /* BookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA12C14EABD97008BE51F /* BookView.xib */; };
 		173BA13114EABD97008BE51F /* PublisherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA12D14EABD97008BE51F /* PublisherView.xib */; };
 		173BA13214EABD97008BE51F /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA12E14EABD97008BE51F /* ReviewView.xib */; };
-		173BA13B14EABF70008BE51F /* BookTableCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA13914EABF70008BE51F /* BookTableCellViewController.m */; };
-		173BA13E14EABF91008BE51F /* BookTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA13D14EABF91008BE51F /* BookTableCellView.xib */; };
+		173BA13E14EABF91008BE51F /* BookTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA13D14EABF91008BE51F /* BookTableCell.xib */; };
 		173BA15414EAC149008BE51F /* AddBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA15214EAC149008BE51F /* AddBookViewController.m */; };
 		173BA15914EAC16B008BE51F /* EditBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA15714EAC16B008BE51F /* EditBookViewController.m */; };
 		173BA15C14EAC185008BE51F /* AddBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173BA15B14EAC185008BE51F /* AddBookView.xib */; };
@@ -103,6 +103,8 @@
 		170EAED014EA89A100267631 /* MRCoreDataAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRCoreDataAction.m; sourceTree = "<group>"; };
 		170EAED214EA89B600267631 /* JSONKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		170EAED314EA89B600267631 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		1722B24114EE6C17003732B8 /* BookTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookTableCell.h; sourceTree = "<group>"; };
+		1722B24214EE6C17003732B8 /* BookTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookTableCell.m; sourceTree = "<group>"; };
 		173BA0FF14EABBC3008BE51F /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
 		173BA10014EABBC3008BE51F /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
 		173BA10214EABBC4008BE51F /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
@@ -127,9 +129,7 @@
 		173BA12C14EABD97008BE51F /* BookView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookView.xib; sourceTree = "<group>"; };
 		173BA12D14EABD97008BE51F /* PublisherView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublisherView.xib; sourceTree = "<group>"; };
 		173BA12E14EABD97008BE51F /* ReviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewView.xib; sourceTree = "<group>"; };
-		173BA13814EABF70008BE51F /* BookTableCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookTableCellViewController.h; sourceTree = "<group>"; };
-		173BA13914EABF70008BE51F /* BookTableCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookTableCellViewController.m; sourceTree = "<group>"; };
-		173BA13D14EABF91008BE51F /* BookTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookTableCellView.xib; sourceTree = "<group>"; };
+		173BA13D14EABF91008BE51F /* BookTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookTableCell.xib; sourceTree = "<group>"; };
 		173BA15114EAC149008BE51F /* AddBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookViewController.h; sourceTree = "<group>"; };
 		173BA15214EAC149008BE51F /* AddBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBookViewController.m; sourceTree = "<group>"; };
 		173BA15614EAC16B008BE51F /* EditBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBookViewController.h; sourceTree = "<group>"; };
@@ -300,8 +300,8 @@
 				173BA15214EAC149008BE51F /* AddBookViewController.m */,
 				173BA11C14EABD36008BE51F /* AuthorViewController.h */,
 				173BA11D14EABD36008BE51F /* AuthorViewController.m */,
-				173BA13814EABF70008BE51F /* BookTableCellViewController.h */,
-				173BA13914EABF70008BE51F /* BookTableCellViewController.m */,
+				1722B24114EE6C17003732B8 /* BookTableCell.h */,
+				1722B24214EE6C17003732B8 /* BookTableCell.m */,
 				173BA11714EABD0B008BE51F /* BookViewController.h */,
 				173BA11814EABD0B008BE51F /* BookViewController.m */,
 				173BA15614EAC16B008BE51F /* EditBookViewController.h */,
@@ -355,7 +355,7 @@
 			children = (
 				173BA15B14EAC185008BE51F /* AddBookView.xib */,
 				173BA12B14EABD97008BE51F /* AuthorView.xib */,
-				173BA13D14EABF91008BE51F /* BookTableCellView.xib */,
+				173BA13D14EABF91008BE51F /* BookTableCell.xib */,
 				173BA12C14EABD97008BE51F /* BookView.xib */,
 				173BA15D14EAC190008BE51F /* EditBookView.xib */,
 				173BA12D14EABD97008BE51F /* PublisherView.xib */,
@@ -448,7 +448,7 @@
 				173BA13014EABD97008BE51F /* BookView.xib in Resources */,
 				173BA13114EABD97008BE51F /* PublisherView.xib in Resources */,
 				173BA13214EABD97008BE51F /* ReviewView.xib in Resources */,
-				173BA13E14EABF91008BE51F /* BookTableCellView.xib in Resources */,
+				173BA13E14EABF91008BE51F /* BookTableCell.xib in Resources */,
 				173BA15C14EAC185008BE51F /* AddBookView.xib in Resources */,
 				173BA15E14EAC190008BE51F /* EditBookView.xib in Resources */,
 				173F92C114EBBA7F00C6EF49 /* MainWindow.xib in Resources */,
@@ -473,7 +473,6 @@
 				173BA11F14EABD36008BE51F /* AuthorViewController.m in Sources */,
 				173BA12414EABD5A008BE51F /* PublisherViewController.m in Sources */,
 				173BA12914EABD7C008BE51F /* ReviewViewController.m in Sources */,
-				173BA13B14EABF70008BE51F /* BookTableCellViewController.m in Sources */,
 				173BA15414EAC149008BE51F /* AddBookViewController.m in Sources */,
 				173BA15914EAC16B008BE51F /* EditBookViewController.m in Sources */,
 				173BA16914EACB78008BE51F /* MagicalRecordHelpers.m in Sources */,
@@ -496,6 +495,7 @@
 				173F930D14EC095200C6EF49 /* SettingsManager.m in Sources */,
 				173F931914EC188900C6EF49 /* Author+Additions.m in Sources */,
 				173F931C14EC22B800C6EF49 /* Publisher+Additions.m in Sources */,
+				1722B24314EE6C18003732B8 /* BookTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

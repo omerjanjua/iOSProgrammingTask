@@ -7,9 +7,7 @@
 //
 
 #import "JSONSetupHelpers.h"
-#import "Book+Additions.h"
-#import "Author+Additions.h"
-#import "Publisher+Additions.h"
+#import "Additions.h"
 #import "SettingsManager.h"
 
 @implementation JSONSetupHelpers

@@ -11,9 +11,6 @@
 
 @implementation BookViewController
 
-@synthesize managedObjectContext = __managedObjectContext;
-@synthesize fetchedResultsController = __fetchedResultsController;
-
 
 - (void)viewDidLoad
 {
@@ -42,13 +39,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.fetchedResultsController sections] count];
+    return [[Book findAllSortedBy:@"name" ascending:YES] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    return [[Book findAllSortedBy:@"name" ascending:YES] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,8 +75,6 @@
 
 - (void)dealloc
 {
-    [__fetchedResultsController release];
-    [__managedObjectContext release];
     [super dealloc];
 }
 
