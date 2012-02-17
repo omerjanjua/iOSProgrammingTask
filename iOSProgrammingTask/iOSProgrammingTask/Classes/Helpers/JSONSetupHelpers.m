@@ -7,9 +7,9 @@
 //
 
 #import "JSONSetupHelpers.h"
-#import "Book.h"
-#import "Author.h"
-#import "Publisher.h"
+#import "Book+Additions.h"
+#import "Author+Additions.h"
+#import "Publisher+Additions.h"
 #import "SettingsManager.h"
 
 @implementation JSONSetupHelpers
@@ -40,13 +40,8 @@
     
     for (NSDictionary *bookDictionary in booksArray) 
     {
-        Book *book = [Book createEntity];
-        book.authors = [bookDictionary objectForKey:@"Authors"];
-        book.name = [bookDictionary objectForKey:@"Name"];
-        book.price = [bookDictionary objectForKey:@"Price"];
-        book.publishers = [bookDictionary objectForKey:@"Publishers"];
-        book.releaseDate = [bookDictionary objectForKey:@"ReleaseDate"];
-        book.reviews = [bookDictionary objectForKey:@"Reviews"];    }
+        [Book bookForDictionary:bookDictionary];        
+    }
 }
 
 +(void)authorsFirstTime
@@ -57,10 +52,7 @@
     
     for (NSDictionary *authorsDictionay in authorsArray) 
     {
-        Author *author = [Author createEntity];
-        author.dob = [authorsDictionay objectForKey:@"Dob"];
-        author.firstName = [authorsDictionay objectForKey:@"FirstName"];
-        author.surName = [authorsDictionay objectForKey:@"SurName"];
+        [Author authorForDictionary:authorsDictionay];
     }
 }
 
@@ -72,8 +64,7 @@
     
     for (NSDictionary *publisherDictionary in publisherArray) 
     {
-        Publisher *publisher = [Publisher createEntity];
-        publisher.name = [publisherDictionary objectForKey:@"Name"];
+        [Publisher publisherForDictionary:publisherDictionary];
     }
 }
 
