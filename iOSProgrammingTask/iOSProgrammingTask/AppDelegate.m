@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "BookViewController.h"
 #import "JSONSetupHelpers.h"
 
 @implementation AppDelegate
@@ -24,21 +23,11 @@
 //    [self.window addSubview:self.tabBarController.view];//   
 //    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 //    self.window.backgroundColor = [UIColor whiteColor];
-    
-//        BookViewController *controller = [[[BookViewController alloc] initWithNibName:@"BookView" bundle:nil] autorelease];
-//        UINavigationController *tabBar = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];      
-//        [self.tabBarController presentModalViewController: tabBar animated: FALSE];
-    
-    
+
+    [JSONSetupHelpers performFirstTimeSetup];
     self.window.rootViewController = self.tabBarController;//
     [self.window makeKeyAndVisible];
-    
-//    if ([JSONSetupHelpers performFirstTimeSetup]) 
-//    {
-//        BookViewController * controller = [[[BookViewController alloc] init] autorelease];
-//        [self.tabBarController presentModalViewController:controller animated:NO];
-//    }
-    
+
     return YES;
 }
 

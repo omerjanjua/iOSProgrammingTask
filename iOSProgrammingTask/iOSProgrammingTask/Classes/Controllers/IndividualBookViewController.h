@@ -1,18 +1,13 @@
 //
-//  Publisher.m
+//  IndividualBookViewController.h
 //  iOSProgrammingTask
 //
 //  Created by Omer Janjua on 24/02/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Publisher.h"
-#import "Book.h"
+#import <UIKit/UIKit.h>
 
-
-@implementation Publisher
-
-@dynamic name;
-@dynamic bookPublisher;
+@interface IndividualBookViewController : UIViewController
 
 @end

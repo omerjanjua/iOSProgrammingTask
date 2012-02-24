@@ -10,4 +10,6 @@
 
 @interface PublisherViewController : UITableViewController
 
+@property (nonatomic, retain) NSArray *publisher;
+
 @end

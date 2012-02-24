@@ -10,4 +10,6 @@
 
 @interface ReviewViewController : UITableViewController
 
+@property (nonatomic, retain) NSArray *review;
+
 @end

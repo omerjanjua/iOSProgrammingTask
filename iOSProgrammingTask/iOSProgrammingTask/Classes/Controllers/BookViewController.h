@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
 
-@interface BookViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
+@interface BookViewController : UITableViewController
+
+@property (nonatomic, retain) NSArray *books;
+
+-(void) setupNav;
 
 @end

@@ -2,7 +2,7 @@
 //  Book.h
 //  iOSProgrammingTask
 //
-//  Created by Omer Janjua on 14/02/2012.
+//  Created by Omer Janjua on 24/02/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 

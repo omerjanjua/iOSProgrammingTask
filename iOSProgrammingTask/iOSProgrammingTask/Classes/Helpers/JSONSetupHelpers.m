@@ -40,6 +40,7 @@
     {
         [Book bookForDictionary:bookDictionary];        
     }
+    [[NSManagedObjectContext contextForCurrentThread] save];
 }
 
 +(void)authorsFirstTime
@@ -52,6 +53,7 @@
     {
         [Author authorForDictionary:authorsDictionay];
     }
+    [[NSManagedObjectContext contextForCurrentThread] save];
 }
 
 +(void)publishersFirstTime
@@ -64,6 +66,8 @@
     {
         [Publisher publisherForDictionary:publisherDictionary];
     }
+    [[NSManagedObjectContext contextForCurrentThread] save];
+
 }
 
 @end

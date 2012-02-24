@@ -15,10 +15,12 @@
 		170EAE9814EA82F000267631 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAE9714EA82F000267631 /* main.m */; };
 		170EAE9C14EA82F000267631 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EAE9B14EA82F000267631 /* AppDelegate.m */; };
 		1722B24314EE6C18003732B8 /* BookTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1722B24214EE6C17003732B8 /* BookTableCell.m */; };
-		173BA10114EABBC3008BE51F /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10014EABBC3008BE51F /* Author.m */; };
-		173BA10414EABBC4008BE51F /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10314EABBC4008BE51F /* Book.m */; };
-		173BA10714EABBC4008BE51F /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10614EABBC4008BE51F /* Review.m */; };
-		173BA10A14EABBC4008BE51F /* Publisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10914EABBC4008BE51F /* Publisher.m */; };
+		172B416214F798BA00EB8024 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 172B416114F798BA00EB8024 /* Author.m */; };
+		172B416614F798BB00EB8024 /* Publisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 172B416514F798BB00EB8024 /* Publisher.m */; };
+		172B416914F798BB00EB8024 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 172B416814F798BB00EB8024 /* Book.m */; };
+		172B416C14F798BB00EB8024 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 172B416B14F798BB00EB8024 /* Review.m */; };
+		172B417914F7AD1400EB8024 /* IndividualBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 172B417714F7AD1400EB8024 /* IndividualBookViewController.m */; };
+		172B417C14F7AD4500EB8024 /* IndividualBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 172B417B14F7AD4500EB8024 /* IndividualBookView.xib */; };
 		173BA11314EABC06008BE51F /* iOSProgrammingTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 173BA10C14EABC06008BE51F /* iOSProgrammingTask.xcdatamodeld */; };
 		173BA11414EABC06008BE51F /* Author.json in Resources */ = {isa = PBXBuildFile; fileRef = 173BA10F14EABC06008BE51F /* Author.json */; };
 		173BA11514EABC06008BE51F /* Books.json in Resources */ = {isa = PBXBuildFile; fileRef = 173BA11014EABC06008BE51F /* Books.json */; };
@@ -57,6 +59,7 @@
 		173F930D14EC095200C6EF49 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F930C14EC095200C6EF49 /* SettingsManager.m */; };
 		173F931914EC188900C6EF49 /* Author+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F931814EC188900C6EF49 /* Author+Additions.m */; };
 		173F931C14EC22B800C6EF49 /* Publisher+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F931B14EC22B700C6EF49 /* Publisher+Additions.m */; };
+		1746FDB214F3F988009E3FE2 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1746FDB114F3F988009E3FE2 /* NSDate+Additions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,14 +108,17 @@
 		170EAED314EA89B600267631 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		1722B24114EE6C17003732B8 /* BookTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookTableCell.h; sourceTree = "<group>"; };
 		1722B24214EE6C17003732B8 /* BookTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookTableCell.m; sourceTree = "<group>"; };
-		173BA0FF14EABBC3008BE51F /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
-		173BA10014EABBC3008BE51F /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
-		173BA10214EABBC4008BE51F /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
-		173BA10314EABBC4008BE51F /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
-		173BA10514EABBC4008BE51F /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
-		173BA10614EABBC4008BE51F /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
-		173BA10814EABBC4008BE51F /* Publisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publisher.h; sourceTree = "<group>"; };
-		173BA10914EABBC4008BE51F /* Publisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Publisher.m; sourceTree = "<group>"; };
+		172B416014F798BA00EB8024 /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
+		172B416114F798BA00EB8024 /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
+		172B416414F798BB00EB8024 /* Publisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publisher.h; sourceTree = "<group>"; };
+		172B416514F798BB00EB8024 /* Publisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Publisher.m; sourceTree = "<group>"; };
+		172B416714F798BB00EB8024 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		172B416814F798BB00EB8024 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		172B416A14F798BB00EB8024 /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		172B416B14F798BB00EB8024 /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
+		172B417614F7AD1300EB8024 /* IndividualBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualBookViewController.h; sourceTree = "<group>"; };
+		172B417714F7AD1400EB8024 /* IndividualBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndividualBookViewController.m; sourceTree = "<group>"; };
+		172B417B14F7AD4500EB8024 /* IndividualBookView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndividualBookView.xib; sourceTree = "<group>"; };
 		173BA10D14EABC06008BE51F /* iOSProgrammingTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSProgrammingTask.xcdatamodel; sourceTree = "<group>"; };
 		173BA10F14EABC06008BE51F /* Author.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Author.json; sourceTree = "<group>"; };
 		173BA11014EABC06008BE51F /* Books.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Books.json; sourceTree = "<group>"; };
@@ -148,6 +154,8 @@
 		173F931814EC188900C6EF49 /* Author+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Author+Additions.m"; sourceTree = "<group>"; };
 		173F931A14EC22B600C6EF49 /* Publisher+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Publisher+Additions.h"; sourceTree = "<group>"; };
 		173F931B14EC22B700C6EF49 /* Publisher+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Publisher+Additions.m"; sourceTree = "<group>"; };
+		1746FDB014F3F987009E3FE2 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
+		1746FDB114F3F988009E3FE2 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +314,8 @@
 				173BA11814EABD0B008BE51F /* BookViewController.m */,
 				173BA15614EAC16B008BE51F /* EditBookViewController.h */,
 				173BA15714EAC16B008BE51F /* EditBookViewController.m */,
+				172B417614F7AD1300EB8024 /* IndividualBookViewController.h */,
+				172B417714F7AD1400EB8024 /* IndividualBookViewController.m */,
 				173BA12114EABD5A008BE51F /* PublisherViewController.h */,
 				173BA12214EABD5A008BE51F /* PublisherViewController.m */,
 				173BA12614EABD7C008BE51F /* ReviewViewController.h */,
@@ -318,14 +328,14 @@
 			isa = PBXGroup;
 			children = (
 				173F92CF14EBE06200C6EF49 /* Additions */,
-				173BA0FF14EABBC3008BE51F /* Author.h */,
-				173BA10014EABBC3008BE51F /* Author.m */,
-				173BA10214EABBC4008BE51F /* Book.h */,
-				173BA10314EABBC4008BE51F /* Book.m */,
-				173BA10814EABBC4008BE51F /* Publisher.h */,
-				173BA10914EABBC4008BE51F /* Publisher.m */,
-				173BA10514EABBC4008BE51F /* Review.h */,
-				173BA10614EABBC4008BE51F /* Review.m */,
+				172B416014F798BA00EB8024 /* Author.h */,
+				172B416114F798BA00EB8024 /* Author.m */,
+				172B416414F798BB00EB8024 /* Publisher.h */,
+				172B416514F798BB00EB8024 /* Publisher.m */,
+				172B416714F798BB00EB8024 /* Book.h */,
+				172B416814F798BB00EB8024 /* Book.m */,
+				172B416A14F798BB00EB8024 /* Review.h */,
+				172B416B14F798BB00EB8024 /* Review.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -358,6 +368,7 @@
 				173BA13D14EABF91008BE51F /* BookTableCell.xib */,
 				173BA12C14EABD97008BE51F /* BookView.xib */,
 				173BA15D14EAC190008BE51F /* EditBookView.xib */,
+				172B417B14F7AD4500EB8024 /* IndividualBookView.xib */,
 				173BA12D14EABD97008BE51F /* PublisherView.xib */,
 				173BA12E14EABD97008BE51F /* ReviewView.xib */,
 			);
@@ -385,6 +396,8 @@
 				173F930914EC078500C6EF49 /* JSONSetupHelpers.m */,
 				173F930B14EC095200C6EF49 /* SettingsManager.h */,
 				173F930C14EC095200C6EF49 /* SettingsManager.m */,
+				1746FDB014F3F987009E3FE2 /* NSDate+Additions.h */,
+				1746FDB114F3F988009E3FE2 /* NSDate+Additions.m */,
 			);
 			name = Helpers;
 			path = iOSProgrammingTask/Classes/Helpers;
@@ -416,7 +429,7 @@
 		170EAE7C14EA82EE00267631 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 170EAE7F14EA82EE00267631 /* Build configuration list for PBXProject "iOSProgrammingTask" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -452,6 +465,7 @@
 				173BA15C14EAC185008BE51F /* AddBookView.xib in Resources */,
 				173BA15E14EAC190008BE51F /* EditBookView.xib in Resources */,
 				173F92C114EBBA7F00C6EF49 /* MainWindow.xib in Resources */,
+				172B417C14F7AD4500EB8024 /* IndividualBookView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,10 +478,6 @@
 			files = (
 				170EAE9814EA82F000267631 /* main.m in Sources */,
 				170EAE9C14EA82F000267631 /* AppDelegate.m in Sources */,
-				173BA10114EABBC3008BE51F /* Author.m in Sources */,
-				173BA10414EABBC4008BE51F /* Book.m in Sources */,
-				173BA10714EABBC4008BE51F /* Review.m in Sources */,
-				173BA10A14EABBC4008BE51F /* Publisher.m in Sources */,
 				173BA11314EABC06008BE51F /* iOSProgrammingTask.xcdatamodeld in Sources */,
 				173BA11A14EABD0B008BE51F /* BookViewController.m in Sources */,
 				173BA11F14EABD36008BE51F /* AuthorViewController.m in Sources */,
@@ -496,6 +506,12 @@
 				173F931914EC188900C6EF49 /* Author+Additions.m in Sources */,
 				173F931C14EC22B800C6EF49 /* Publisher+Additions.m in Sources */,
 				1722B24314EE6C18003732B8 /* BookTableCell.m in Sources */,
+				1746FDB214F3F988009E3FE2 /* NSDate+Additions.m in Sources */,
+				172B416214F798BA00EB8024 /* Author.m in Sources */,
+				172B416614F798BB00EB8024 /* Publisher.m in Sources */,
+				172B416914F798BB00EB8024 /* Book.m in Sources */,
+				172B416C14F798BB00EB8024 /* Review.m in Sources */,
+				172B417914F7AD1400EB8024 /* IndividualBookViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +578,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOSProgrammingTask/iOSProgrammingTask-Prefix.pch";
 				INFOPLIST_FILE = "iOSProgrammingTask/iOSProgrammingTask-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -573,6 +590,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOSProgrammingTask/iOSProgrammingTask-Prefix.pch";
 				INFOPLIST_FILE = "iOSProgrammingTask/iOSProgrammingTask-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -13,4 +13,8 @@
 
 +(Book*)bookForDictionary:(NSDictionary*)dictionary;
 
++(NSArray*)booksInAlphaOrder;
+
++(NSFetchRequest*)alphaBooks;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface AuthorViewController : UITableViewController
 
+@property (nonatomic, retain) NSArray *author;
+
 @end
