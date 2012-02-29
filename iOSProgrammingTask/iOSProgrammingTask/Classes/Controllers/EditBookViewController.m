@@ -65,7 +65,7 @@
     UIBarButtonItem *cancelButton = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPressed:)]autorelease];
     self.navigationItem.leftBarButtonItem = cancelButton;
     }
-    self.scrollView.contentSize = self.contentView.frame.size;//
+    self.scrollView.contentSize = self.contentView.frame.size;
 }
 
 -(IBAction)cancelPressed:(id)sender
@@ -116,8 +116,6 @@
 -(void)setValueForBooks
 {
     self.book.name = self.nameValue.text;
-    //self.book.price = self.priceValue.text;
-    //self.book.releaseDate = self.releaseValue.text;
     self.book.authors = self.authorsValue.text;
     self.book.publishers = self.publisherValue.text;
     self.book.reviews = self.reviewValue.text;
@@ -134,8 +132,6 @@
 -(void)setupInitialBookValues
 {
     self.book.name = @"";
-//    self.book.price = @"";
-//    self.book.releaseDate = @"";
     self.book.authors = @"";
     self.book.publishers = @"";
     self.book.reviews = @"";

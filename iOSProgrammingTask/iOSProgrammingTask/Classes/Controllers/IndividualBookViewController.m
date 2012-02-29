@@ -106,8 +106,6 @@
     }
     
     self.nameValue.text = self.book.name;
-    //self.priceValue.text = self.book.price;
-    // self.releaseValue.text = self.book.releaseDate;
     self.authorValue.text = self.book.authors;
     self.publisherValue.text = self.book.publishers;
     self.reviewValue.text = self.book.reviews;
@@ -168,8 +166,6 @@
 -(void)setValueForBooks
 {
     self.book.name = self.nameValue.text;
-    //self.book.price = self.priceValue.text;
-    //self.book.releaseDate = self.releaseValue.text;
     self.book.authors = self.authorValue.text;
     self.book.publishers = self.publisherValue.text;
     self.book.reviews = self.reviewValue.text;

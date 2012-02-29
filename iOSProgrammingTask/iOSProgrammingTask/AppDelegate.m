@@ -20,10 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {     
-//    [self.window addSubview:self.tabBarController.view];//   
-//    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-//    self.window.backgroundColor = [UIColor whiteColor];
-
     [JSONSetupHelpers performFirstTimeSetup];
     self.window.rootViewController = self.tabBarController;//
     [self.window makeKeyAndVisible];
