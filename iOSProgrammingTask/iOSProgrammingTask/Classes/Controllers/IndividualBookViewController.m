@@ -174,16 +174,15 @@
     self.book.publishers = self.publisherValue.text;
     self.book.reviews = self.reviewValue.text;
     
-#warning TODO ordering reverse
-    NSDateFormatter *currentDate = [[NSDateFormatter alloc] init];
-    [currentDate setDateFormat:@"dd-MM-yyyy"];
-    NSString *stringFromDate = [currentDate stringFromDate:self.book.releaseDate];
-    self.releaseValue.text = stringFromDate;
+    NSDateFormatter *currentDate = [[[NSDateFormatter alloc] init]autorelease];
+    [currentDate setDateFormat:@"dd-MMMM-yyyy"];
+    NSDate *dateFromString = [currentDate dateFromString:self.releaseValue.text];
+    self.book.releaseDate = dateFromString;
     
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.book.price]];
-    self.priceValue.text = string;
+    NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:self.priceValue.text];
+    self.book.price = decimal;
+
+
 }
 
 #pragma mark - Validate
