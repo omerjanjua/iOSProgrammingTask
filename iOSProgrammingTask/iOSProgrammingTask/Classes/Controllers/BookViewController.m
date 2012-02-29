@@ -10,6 +10,7 @@
 #import "Book.h"
 #import "BookTableCell.h"
 #import "EditBookViewController.h"
+#import "IndividualBookViewController.h"
 
 @implementation BookViewController
 
@@ -22,46 +23,20 @@
     [self setupNav];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-}
-
 #pragma setupAdd
 
 -(void) setupNav
 {
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBook:)];
+    UIBarButtonItem *button = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addContact:)]autorelease];
     self.navigationItem.rightBarButtonItem = button;
-    [button release];
-    button = nil;
 }
 
 -(IBAction)addContact:(id)sender
 {
-    EditBookViewController *controller = [[EditBookViewController alloc] initWithNibName:@"EditBookView" bundle:nil];
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+    EditBookViewController *controller = [[[EditBookViewController alloc] initWithNibName:@"EditBookView" bundle:nil]autorelease];
+    controller.isModal = YES;
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller]autorelease];
     [self.navigationController presentModalViewController:navController animated:YES];
-    [controller release];
-    controller = nil;
-    [navController release]; 
-    navController = nil;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -71,11 +46,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.books count];
+    if (self.books) {
+        return [self.books count];
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //setting the custom cell
     static NSString *CellIdentifier = @"BookCell";
     BookTableCell *cell = (BookTableCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -99,6 +78,15 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 78.0;
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil]autorelease];
+    IndividualBookViewController *controller = [[[IndividualBookViewController alloc] initWithNibName:@"IndividualBookView" bundle:nil]autorelease];
+    Book *book = [self.books objectAtIndex:indexPath.row];
+    controller.book = book;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

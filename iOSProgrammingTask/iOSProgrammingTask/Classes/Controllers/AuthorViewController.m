@@ -18,27 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.author = [Author findAllSortedBy:@"firstName" ascending:YES];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
+    self.author = [Author findAllSortedBy:@"firstName" ascending:YES];//sort author in ascending order by firstname
 }
 
 #pragma mark - Table view data source

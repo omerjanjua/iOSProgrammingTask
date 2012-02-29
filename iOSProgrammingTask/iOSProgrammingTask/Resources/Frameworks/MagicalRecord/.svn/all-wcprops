@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/GSK-Seretide-DutchDeepDive/!svn/ver/253/trunk/client/SeretideDutchDeepDive/SeretideDutchDeepDive/MagicalRecord
+END
+CoreData+MagicalRecord.h
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/GSK-Seretide-DutchDeepDive/!svn/ver/30/trunk/client/SeretideDutchDeepDive/SeretideDutchDeepDive/MagicalRecord/CoreData+MagicalRecord.h
+END
+MRCoreDataAction.h
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/GSK-Seretide-DutchDeepDive/!svn/ver/30/trunk/client/SeretideDutchDeepDive/SeretideDutchDeepDive/MagicalRecord/MRCoreDataAction.h
+END
+MagicalRecordHelpers.h
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/GSK-Seretide-DutchDeepDive/!svn/ver/30/trunk/client/SeretideDutchDeepDive/SeretideDutchDeepDive/MagicalRecord/MagicalRecordHelpers.h
+END
+MRCoreDataAction.m
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/GSK-Seretide-DutchDeepDive/!svn/ver/30/trunk/client/SeretideDutchDeepDive/SeretideDutchDeepDive/MagicalRecord/MRCoreDataAction.m
+END
+MagicalRecordHelpers.m
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/GSK-Seretide-DutchDeepDive/!svn/ver/30/trunk/client/SeretideDutchDeepDive/SeretideDutchDeepDive/MagicalRecord/MagicalRecordHelpers.m
+END
+MagicalRecordShorthand.h
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/GSK-Seretide-DutchDeepDive/!svn/ver/30/trunk/client/SeretideDutchDeepDive/SeretideDutchDeepDive/MagicalRecord/MagicalRecordShorthand.h
+END
