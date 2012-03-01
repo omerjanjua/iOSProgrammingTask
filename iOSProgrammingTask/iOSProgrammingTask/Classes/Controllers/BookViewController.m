@@ -77,10 +77,7 @@
     [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
     NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:book.price]];
     cell.price.text = string;
-    
-    
-    NSLog(@"%@", book.name);
-    
+        
     return cell;
 }
 
