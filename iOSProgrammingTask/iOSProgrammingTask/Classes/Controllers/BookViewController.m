@@ -19,8 +19,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.books = [Book findAllSortedBy:@"name" ascending:YES];   
     [self setupNav];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.books = [Book findAllSortedBy:@"name" ascending:YES];   
+    [self.tableView reloadData];
 }
 
 #pragma setupAdd
@@ -72,6 +78,9 @@
     NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:book.price]];
     cell.price.text = string;
     
+    
+    NSLog(@"%@", book.name);
+    
     return cell;
 }
 
@@ -96,7 +105,9 @@
 
 - (void)viewDidUnload
 {
+
     [super viewDidUnload];
+    //self.tableView = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

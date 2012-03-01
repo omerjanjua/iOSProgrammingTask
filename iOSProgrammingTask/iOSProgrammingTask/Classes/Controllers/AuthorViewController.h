@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AuthorViewController : UITableViewController
+@interface AuthorViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) NSArray *author;
 

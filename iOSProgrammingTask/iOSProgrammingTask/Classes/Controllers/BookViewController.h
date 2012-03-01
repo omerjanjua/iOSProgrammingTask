@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface BookViewController : UITableViewController
+@interface BookViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) NSArray *books;
 
