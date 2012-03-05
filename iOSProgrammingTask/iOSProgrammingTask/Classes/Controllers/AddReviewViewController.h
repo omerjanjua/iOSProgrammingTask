@@ -10,6 +10,8 @@
 #import "Review.h"
 
 @interface AddReviewViewController : UIViewController
+@property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (retain, nonatomic) IBOutlet UIView *contentView;
 @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
 @property (retain, nonatomic) IBOutlet UITextField *titleValue;
 @property (retain, nonatomic) IBOutlet UILabel *ratingLabel;

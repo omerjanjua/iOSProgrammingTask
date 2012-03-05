@@ -21,6 +21,8 @@
 @end
 
 @implementation AddReviewViewController
+@synthesize scrollView = _scrollView;
+@synthesize contentView = _contentView;
 @synthesize titleLabel = _titleLabel;
 @synthesize titleValue = _titleValue;
 @synthesize ratingLabel = _ratingLabel;
@@ -58,6 +60,7 @@
         UIBarButtonItem *cancelButton = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPressed:)]autorelease];
         self.navigationItem.leftBarButtonItem = cancelButton;
     }
+    self.scrollView.contentSize = self.contentView.frame.size;
 }
 
 -(IBAction)cancelPressed:(id)sender
@@ -191,6 +194,8 @@
     self.ratingValue = nil;
     self.commentLabel = nil;
     self.commentValue = nil;
+    self.scrollView = nil;
+    self.contentView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
