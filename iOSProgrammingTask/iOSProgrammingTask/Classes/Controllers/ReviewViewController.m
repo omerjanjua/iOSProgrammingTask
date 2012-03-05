@@ -8,6 +8,9 @@
 
 #import "ReviewViewController.h"
 #import "Review.h"
+#import "ReviewTableCell.h"
+#import "IndividualReviewViewController.h"
+#import "AddReviewViewController.h"
 
 @implementation ReviewViewController
 
@@ -19,27 +22,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.review = [Review findAllSortedBy:@"title" ascending:YES];
+    [self setupNav];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.review = [Review findAllSortedBy:@"title" ascending:YES];
+    [self.tableView reloadData];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+#pragma mark - setupAdd
+
+-(void)setupNav
 {
-    [super viewWillDisappear:animated];
+    UIBarButtonItem *button = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addReview:)]autorelease];
+    self.navigationItem.rightBarButtonItem = button;
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+-(IBAction)addReview:(id)sender
 {
-    [super viewDidDisappear:animated];
+    AddReviewViewController *controller = [[[AddReviewViewController alloc] initWithNibName:@"AddReviewView" bundle:nil] autorelease];
+    controller.isModal = YES;
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
+    [self.navigationController presentModalViewController:navController animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -52,22 +58,47 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [self.review count];
+    if (self.review) {
+        return [self.review count];
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"ReviewCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ReviewTableCell *cell = (ReviewTableCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = (ReviewTableCell *) [[[NSBundle mainBundle] loadNibNamed:@"ReviewTableCell" owner:self options:nil] objectAtIndex:0];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     Review *review = [self.review objectAtIndex:indexPath.row];
-    cell.textLabel.text = review.title;
+    cell.titleLabel.text = review.title;
+    
+    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
+    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:review.rating]];
+    cell.ratingLabel.text = string;
+    
+    
+    
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 78.0;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
+    IndividualReviewViewController *controller = [[[IndividualReviewViewController alloc] initWithNibName:@"IndividualReviewView" bundle:nil] autorelease];
+    Review *review = [self.review objectAtIndex:indexPath.row];
+    controller.review = review;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

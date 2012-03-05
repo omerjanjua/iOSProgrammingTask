@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReviewViewController : UITableViewController
+@interface ReviewViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) NSArray *review;
+
+-(void)setupNav;
 
 @end

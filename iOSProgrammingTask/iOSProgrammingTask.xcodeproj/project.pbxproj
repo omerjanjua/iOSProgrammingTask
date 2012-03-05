@@ -42,6 +42,12 @@
 		173F930D14EC095200C6EF49 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F930C14EC095200C6EF49 /* SettingsManager.m */; };
 		173F931914EC188900C6EF49 /* Author+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F931814EC188900C6EF49 /* Author+Additions.m */; };
 		173F931C14EC22B800C6EF49 /* Publisher+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 173F931B14EC22B700C6EF49 /* Publisher+Additions.m */; };
+		17DD9FC91501263600F71681 /* IndividualReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DD9FC71501263600F71681 /* IndividualReviewViewController.m */; };
+		17DD9FCC1501265800F71681 /* IndividualReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17DD9FCB1501265800F71681 /* IndividualReviewView.xib */; };
+		17DD9FCF150133E200F71681 /* ReviewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DD9FCE150133E200F71681 /* ReviewTableCell.m */; };
+		17DD9FD11501340400F71681 /* ReviewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17DD9FD01501340400F71681 /* ReviewTableCell.xib */; };
+		17DD9FD51503BF9700F71681 /* AddReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DD9FD31503BF9600F71681 /* AddReviewViewController.m */; };
+		17DD9FD81503BFB800F71681 /* AddReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17DD9FD71503BFB800F71681 /* AddReviewView.xib */; };
 		17E9E4C314FBDE8D00010FC2 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E9E4C214FBDE8D00010FC2 /* JSONKit.m */; };
 		17E9E4E514FBDE9C00010FC2 /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E9E4C814FBDE9C00010FC2 /* NSAttributeDescription+MagicalDataImport.m */; };
 		17E9E4E614FBDE9C00010FC2 /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E9E4CA14FBDE9C00010FC2 /* NSEntityDescription+MagicalDataImport.m */; };
@@ -117,6 +123,15 @@
 		173F931814EC188900C6EF49 /* Author+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Author+Additions.m"; sourceTree = "<group>"; };
 		173F931A14EC22B600C6EF49 /* Publisher+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Publisher+Additions.h"; sourceTree = "<group>"; };
 		173F931B14EC22B700C6EF49 /* Publisher+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Publisher+Additions.m"; sourceTree = "<group>"; };
+		17DD9FC61501263600F71681 /* IndividualReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualReviewViewController.h; sourceTree = "<group>"; };
+		17DD9FC71501263600F71681 /* IndividualReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndividualReviewViewController.m; sourceTree = "<group>"; };
+		17DD9FCB1501265800F71681 /* IndividualReviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndividualReviewView.xib; sourceTree = "<group>"; };
+		17DD9FCD150133E100F71681 /* ReviewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewTableCell.h; sourceTree = "<group>"; };
+		17DD9FCE150133E200F71681 /* ReviewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewTableCell.m; sourceTree = "<group>"; };
+		17DD9FD01501340400F71681 /* ReviewTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewTableCell.xib; sourceTree = "<group>"; };
+		17DD9FD21503BF9600F71681 /* AddReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddReviewViewController.h; sourceTree = "<group>"; };
+		17DD9FD31503BF9600F71681 /* AddReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddReviewViewController.m; sourceTree = "<group>"; };
+		17DD9FD71503BFB800F71681 /* AddReviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddReviewView.xib; sourceTree = "<group>"; };
 		17E9E4C114FBDE8D00010FC2 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		17E9E4C214FBDE8D00010FC2 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		17E9E4C714FBDE9C00010FC2 /* NSAttributeDescription+MagicalDataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributeDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
@@ -243,6 +258,8 @@
 		173BA0FD14EABBAA008BE51F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17DD9FD21503BF9600F71681 /* AddReviewViewController.h */,
+				17DD9FD31503BF9600F71681 /* AddReviewViewController.m */,
 				173BA11C14EABD36008BE51F /* AuthorViewController.h */,
 				173BA11D14EABD36008BE51F /* AuthorViewController.m */,
 				1722B24114EE6C17003732B8 /* BookTableCell.h */,
@@ -253,8 +270,12 @@
 				173BA15714EAC16B008BE51F /* EditBookViewController.m */,
 				172B417614F7AD1300EB8024 /* IndividualBookViewController.h */,
 				172B417714F7AD1400EB8024 /* IndividualBookViewController.m */,
+				17DD9FC61501263600F71681 /* IndividualReviewViewController.h */,
+				17DD9FC71501263600F71681 /* IndividualReviewViewController.m */,
 				173BA12114EABD5A008BE51F /* PublisherViewController.h */,
 				173BA12214EABD5A008BE51F /* PublisherViewController.m */,
+				17DD9FCD150133E100F71681 /* ReviewTableCell.h */,
+				17DD9FCE150133E200F71681 /* ReviewTableCell.m */,
 				173BA12614EABD7C008BE51F /* ReviewViewController.h */,
 				173BA12714EABD7C008BE51F /* ReviewViewController.m */,
 			);
@@ -300,12 +321,15 @@
 		173BA11214EABC06008BE51F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				17DD9FD71503BFB800F71681 /* AddReviewView.xib */,
 				173BA12B14EABD97008BE51F /* AuthorView.xib */,
 				173BA13D14EABF91008BE51F /* BookTableCell.xib */,
 				173BA12C14EABD97008BE51F /* BookView.xib */,
 				173BA15D14EAC190008BE51F /* EditBookView.xib */,
 				172B417B14F7AD4500EB8024 /* IndividualBookView.xib */,
+				17DD9FCB1501265800F71681 /* IndividualReviewView.xib */,
 				173BA12D14EABD97008BE51F /* PublisherView.xib */,
+				17DD9FD01501340400F71681 /* ReviewTableCell.xib */,
 				173BA12E14EABD97008BE51F /* ReviewView.xib */,
 			);
 			path = Views;
@@ -463,6 +487,9 @@
 				173BA15E14EAC190008BE51F /* EditBookView.xib in Resources */,
 				173F92C114EBBA7F00C6EF49 /* MainWindow.xib in Resources */,
 				172B417C14F7AD4500EB8024 /* IndividualBookView.xib in Resources */,
+				17DD9FCC1501265800F71681 /* IndividualReviewView.xib in Resources */,
+				17DD9FD11501340400F71681 /* ReviewTableCell.xib in Resources */,
+				17DD9FD81503BFB800F71681 /* AddReviewView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +534,9 @@
 				17E9E4F014FBDE9C00010FC2 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
 				17E9E4F114FBDE9C00010FC2 /* MagicalRecordHelpers.m in Sources */,
 				17E9E4F214FBDE9C00010FC2 /* MRCoreDataAction.m in Sources */,
+				17DD9FC91501263600F71681 /* IndividualReviewViewController.m in Sources */,
+				17DD9FCF150133E200F71681 /* ReviewTableCell.m in Sources */,
+				17DD9FD51503BF9700F71681 /* AddReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,7 +18,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     self.author = [Author findAllSortedBy:@"firstName" ascending:YES];//sort author in ascending order by firstname
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -30,7 +36,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.author count];
+    if (self.author) {
+        return [self.author count];
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
