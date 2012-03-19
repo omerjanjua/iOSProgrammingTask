@@ -28,17 +28,11 @@
 @implementation EditBookViewController
 @synthesize scrollView = _scrollView;
 @synthesize contentView = _contentView;
-@synthesize nameLabel = _nameLabel;
 @synthesize nameValue = _nameValue;
-@synthesize priceLabel = _priceLabel;
 @synthesize priceValue = _priceValue;
-@synthesize releaseLabel = _releaseLabel;
 @synthesize releaseValue = _releaseValue;
-@synthesize authorsLabel = _authorsLabel;
 @synthesize authorsValue = _authorsValue;
-@synthesize publisherLabel = _publisherLabel;
 @synthesize publisherValue = _publisherValue;
-@synthesize reviewLabel = _reviewLabel;
 @synthesize reviewValue = _reviewValue;
 @synthesize deleteButton = _deleteButton;
 @synthesize book = _book;
@@ -46,9 +40,7 @@
 @synthesize isModal = _isModal;
 @synthesize fieldState = _fieldState;
 
-
-#pragma mark - View lifecycle
-
+#pragma mark - View didLoad
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -58,42 +50,7 @@
     [self setupView];
 }
 
-#pragma mark - setup
-
--(void) setupPage
-{
-    if (self.isModal) {
-    UIBarButtonItem *cancelButton = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPressed:)]autorelease];
-    self.navigationItem.leftBarButtonItem = cancelButton;
-    }
-    self.scrollView.contentSize = self.contentView.frame.size;
-}
-
--(IBAction)cancelPressed:(id)sender
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
--(void)setupView
-{
-    if (!self.book) {
-        self.deleteButton.hidden = YES;
-    }
-    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)]autorelease];
-    tap.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tap];
-}
-
-- (IBAction) dismissKeyboard
-{
-    [self.nameValue resignFirstResponder];
-    [self.priceValue resignFirstResponder];
-    [self.releaseValue resignFirstResponder];
-    [self.authorsValue resignFirstResponder];
-    [self.publisherValue resignFirstResponder];
-    [self.reviewValue resignFirstResponder];
-    [self setValueForBooks];
-}
+#pragma mark - setupBooks
 
 -(void) setupBooks
 {
@@ -101,7 +58,7 @@
     self.authorsValue.text = self.book.authors;
     self.publisherValue.text = self.book.publishers;
     self.reviewValue.text = self.book.reviews;
-        
+    
     NSDateFormatter *currentDate = [[NSDateFormatter alloc] init];
     [currentDate setDateFormat:@"dd-MM-yyyy"];
     NSString *stringFromDate = [currentDate stringFromDate:self.book.releaseDate];
@@ -149,6 +106,22 @@
     
 }
 
+#pragma mark - cancelPressed
+-(void) setupPage
+{
+    if (self.isModal) {
+    UIBarButtonItem *cancelButton = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPressed:)]autorelease];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+    }
+    self.scrollView.contentSize = self.contentView.frame.size;
+}
+
+-(IBAction)cancelPressed:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - savePressed
 -(void)setupNav
 {
     UIBarButtonItem *button = [[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(savePressed:)]autorelease];
@@ -173,7 +146,7 @@
         else{
             [self.navigationController popViewControllerAnimated:YES];        
         }
-
+        
     }
     else {
         UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Validate" message:validate delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]autorelease];
@@ -193,12 +166,11 @@
 
 -(NSString*)validateOrder
 {
-    if (([self textFieldisValid:self.book.name]) && ([self textFieldisValid:self.book.authors]) && ([self textFieldisValid:self.book.publishers])) {
+    if ((![self textFieldisValid:self.book.name]) || (![self textFieldisValid:self.book.authors]) || (![self textFieldisValid:self.book.publishers])) {
         return @"can you must enter a title, author and publisher please";
     }
     return @"";
 }
-
 
 #pragma mark - REMOVING CONTACTS
 -(IBAction)removeBookSelected:(id)sender
@@ -274,21 +246,37 @@
     }];
 }
 
+
+-(void)setupView
+{
+    if (!self.book) {
+        self.deleteButton.hidden = YES;
+    }
+    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)]autorelease];
+    tap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tap];
+}
+
+- (IBAction) dismissKeyboard
+{
+    [self.nameValue resignFirstResponder];
+    [self.priceValue resignFirstResponder];
+    [self.releaseValue resignFirstResponder];
+    [self.authorsValue resignFirstResponder];
+    [self.publisherValue resignFirstResponder];
+    [self.reviewValue resignFirstResponder];
+    [self setValueForBooks];
+}
+
 - (void)viewDidUnload
 {
     self.scrollView = nil;
     self.contentView = nil;
-    self.nameLabel = nil;
     self.nameValue = nil;
-    self.priceLabel = nil;
     self.priceValue = nil;
-    self.releaseLabel = nil;
     self.releaseValue = nil;
-    self.authorsLabel = nil;
     self.authorsValue = nil;
-    self.publisherLabel = nil;
     self.publisherValue = nil;
-    self.reviewLabel = nil;
     self.reviewValue = nil;
     self.deleteButton = nil;
     [super viewDidUnload];

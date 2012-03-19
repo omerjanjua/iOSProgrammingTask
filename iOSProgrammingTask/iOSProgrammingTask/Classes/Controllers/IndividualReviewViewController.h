@@ -15,7 +15,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (retain, nonatomic) IBOutlet UITextView *commentsTextview;
 
-@property (nonatomic, assign) BOOL isModal;
 @property (nonatomic, retain) Review *review;
 
 @end

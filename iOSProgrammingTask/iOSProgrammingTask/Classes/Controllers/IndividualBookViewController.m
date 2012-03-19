@@ -11,50 +11,30 @@
 #import "EditBookViewController.h"
 
 @interface IndividualBookViewController ()
-
--(void)setupPage;
 -(void)setupBooks;
 -(void)setupInitialBookValues;
 -(void)setupNav;
--(void)setValueForBooks;
--(NSString*)validateBooks;
 
 @end
 
 @implementation IndividualBookViewController
 @synthesize scrollView = _scrollView;
 @synthesize contentView = _contentView;
-@synthesize nameLabel = _nameLabel;
 @synthesize nameValue = _nameValue;
-@synthesize priceLabel = _priceLabel;
 @synthesize priceValue = _priceValue;
-@synthesize releaseLabel = _releaseLabel;
 @synthesize releaseValue = _releaseValue;
-@synthesize authorLabel = _authorLabel;
 @synthesize authorValue = _authorValue;
-@synthesize publisherLabel = _publisherLabel;
 @synthesize publisherValue = _publisherValue;
-@synthesize reviewLabel = _reviewLabel;
 @synthesize reviewValue = _reviewValue;
 @synthesize book = _book;
-@synthesize isModal = _isModal;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 #pragma mark - setupView
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setupPage];
     [self setupNav];
+    self.scrollView.contentSize = self.contentView.frame.size;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -64,39 +44,28 @@
     [self setupBooks];
 }
 
-#pragma mark - Save
--(IBAction)savePressed:(id)sender
+#pragma mark - edit
+
+-(void)setupNav
 {
-    [self setValueForBooks];
-    NSString *validate = [self validateBooks];
-    if ([validate isEqualToString:@""]) {
-        [self.book.managedObjectContext save];
-        if (self.isModal) {
-            [self dismissModalViewControllerAnimated:YES];
-        }
-    }
-    else {
-        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Validate" message:validate delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]autorelease];
-        [alert show];
-    }
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
+    UIBarButtonItem *button = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)]autorelease];
+    self.navigationItem.rightBarButtonItem = button;
 }
 
-#pragma mark - setup
-
--(void) setupPage
+#pragma mark - editButtonPressed
+-(IBAction)editButtonPressed:(id)sender
 {
-    if (self.isModal) {
-        UIBarButtonItem *cancelButton = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPressed:)]autorelease];
-        self.navigationItem.leftBarButtonItem = cancelButton;        
-    }
-    self.scrollView.contentSize = self.contentView.frame.size;
+    EditBookViewController *controller = [[[EditBookViewController alloc] initWithNibName:@"EditBookView" bundle:nil]autorelease];
+    controller.book = self.book;
+    controller.deleteDelegate = self;
+    controller.isModal = YES;
+    
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller]autorelease];
+    [self.navigationController presentModalViewController:navController animated:YES];
 }
 
--(IBAction)cancelPressed:(id)sender
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
+#pragma mark - setupBooks
 -(void) setupBooks
 {
     if (!self.book) {
@@ -141,105 +110,25 @@
     
 }
 
-#pragma mark - edit
-
--(void)setupNav
-{
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
-    UIBarButtonItem *button = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed:)]autorelease];
-    self.navigationItem.rightBarButtonItem = button;
-}
-
--(IBAction)editButtonPressed:(id)sender
-{
-    EditBookViewController *controller = [[[EditBookViewController alloc] initWithNibName:@"EditBookView" bundle:nil]autorelease];
-    controller.book = self.book;
-    controller.deleteDelegate = self;
-    controller.isModal = YES;
-    
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller]autorelease];
-    [self.navigationController presentModalViewController:navController animated:YES];
-}
-
-#pragma mark - setup book values
-
--(void)setValueForBooks
-{
-    self.book.name = self.nameValue.text;
-    self.book.authors = self.authorValue.text;
-    self.book.publishers = self.publisherValue.text;
-    self.book.reviews = self.reviewValue.text;
-    
-    NSDateFormatter *currentDate = [[[NSDateFormatter alloc] init]autorelease];
-    [currentDate setDateFormat:@"dd-MMMM-yyyy"];
-    NSDate *dateFromString = [currentDate dateFromString:self.releaseValue.text];
-    self.book.releaseDate = dateFromString;
-    
-    NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:self.priceValue.text];
-    self.book.price = decimal;
-
-
-}
-
-#pragma mark - Validate
-
--(NSString*)validateBooks
-{
-    if (([self.book.name isEqualToString:@""]) && ([self.book.authors isEqualToString:@""]) && ([self.book.publishers isEqualToString:@""])) {
-        return @"can you must enter a title, author and publisher please";
-    }
-    return @"";
-}   
-
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if ([alertView.title isEqualToString:@"Delete Book"]) {
-        if (buttonIndex == 1) {
-            [self.book deleteEntity];
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-    }
-    else {
-        
-    }
-}
-
-
-#pragma mark - dealloc and unload
+#pragma mark - unload outlets
 
 - (void)viewDidUnload
 {
-    [self dealloc];
     [super viewDidUnload];
+    self.scrollView = nil;
+    self.contentView = nil;
+    self.nameValue = nil;
+    self.priceValue = nil;
+    self.releaseValue = nil;
+    self.authorValue = nil;
+    self.publisherValue = nil;
+    self.reviewValue = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
-- (void)dealloc {
-    self.scrollView = nil;
-    self.contentView = nil;
-    self.nameLabel = nil;
-    self.nameValue = nil;
-    self.priceLabel = nil;
-    self.priceValue = nil;
-    self.releaseLabel = nil;
-    self.releaseValue = nil;
-    self.authorLabel = nil;
-    self.authorValue = nil;
-    self.publisherLabel = nil;
-    self.publisherValue = nil;
-    self.reviewLabel = nil;
-    self.reviewValue = nil;
-    [super dealloc];
-}
-
-//TODO incomplete implementation warning.
+//to remove incomplete implementation warning.
 -(void)bookDeleted
 {
     [self.navigationController popViewControllerAnimated:YES];

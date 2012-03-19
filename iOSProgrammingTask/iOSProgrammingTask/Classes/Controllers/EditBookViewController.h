@@ -14,17 +14,11 @@
 
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) IBOutlet UIView *contentView;
-@property (retain, nonatomic) IBOutlet UILabel *nameLabel;
 @property (retain, nonatomic) IBOutlet UITextField *nameValue;
-@property (retain, nonatomic) IBOutlet UILabel *priceLabel;
 @property (retain, nonatomic) IBOutlet UITextField *priceValue;
-@property (retain, nonatomic) IBOutlet UILabel *releaseLabel;
 @property (retain, nonatomic) IBOutlet UITextField *releaseValue;
-@property (retain, nonatomic) IBOutlet UILabel *authorsLabel;
 @property (retain, nonatomic) IBOutlet UITextField *authorsValue;
-@property (retain, nonatomic) IBOutlet UILabel *publisherLabel;
 @property (retain, nonatomic) IBOutlet UITextField *publisherValue;
-@property (retain, nonatomic) IBOutlet UILabel *reviewLabel;
 @property (retain, nonatomic) IBOutlet UITextField *reviewValue;
 @property (retain, nonatomic) IBOutlet UIButton *deleteButton;
 

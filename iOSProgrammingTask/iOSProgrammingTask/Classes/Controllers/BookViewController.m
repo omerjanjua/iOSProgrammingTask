@@ -7,7 +7,6 @@
 //
 
 #import "BookViewController.h"
-#import "Book.h"
 #import "BookTableCell.h"
 #import "EditBookViewController.h"
 #import "IndividualBookViewController.h"
@@ -16,6 +15,7 @@
 
 @synthesize books = _books;
 
+#pragma mark - viewDidLoad
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -30,7 +30,6 @@
 }
 
 #pragma setupAdd
-
 -(void) setupNav
 {
     UIBarButtonItem *button = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addContact:)]autorelease];
@@ -45,6 +44,7 @@
     [self.navigationController presentModalViewController:navController animated:YES];
 }
 
+#pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1; 
@@ -95,11 +95,7 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
+#pragma mark - unload
 - (void)dealloc
 {
     self.books = nil;

@@ -10,12 +10,14 @@
 
 @interface AddReviewViewController ()
 
--(void)setupPage;
+-(void)setupCancel;
 -(void)setupView;
 -(void)setupNav;
 -(void)setupInitialReviewValue;
 -(void)setValueForReview;
 -(void)setupReview;
+
+-(BOOL)textFieldisValid:(NSString *)textField;
 -(NSString*)validateReview;
 
 @end
@@ -23,66 +25,24 @@
 @implementation AddReviewViewController
 @synthesize scrollView = _scrollView;
 @synthesize contentView = _contentView;
-@synthesize titleLabel = _titleLabel;
 @synthesize titleValue = _titleValue;
-@synthesize ratingLabel = _ratingLabel;
 @synthesize ratingValue = _ratingValue;
-@synthesize commentLabel = _commentLabel;
 @synthesize commentValue = _commentValue;
 @synthesize isModal = _isModal;
 @synthesize review = _review;
 @synthesize fieldState = _fieldState;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setupPage];
+    [self setupCancel];
     [self setupView];
     [self setupNav];
     [self setupReview];
     // Do any additional setup after loading the view from its nib.
 }
 
-#pragma mark - setup
-
--(void) setupPage
-{
-    if (self.isModal) {
-        UIBarButtonItem *cancelButton = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPressed:)]autorelease];
-        self.navigationItem.leftBarButtonItem = cancelButton;
-    }
-    self.scrollView.contentSize = self.contentView.frame.size;
-}
-
--(IBAction)cancelPressed:(id)sender
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
--(void)setupView
-{
-    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)]autorelease];
-    tap.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tap];
-}
-
--(IBAction) dismissKeyboard
-{
-    [self.titleValue resignFirstResponder];
-    [self.ratingValue resignFirstResponder];
-    [self.commentValue resignFirstResponder];
-    [self setValueForReview];
-}
-
+#pragma mark - setupReview
 -(void)setupReview
 {
     self.titleValue.text = self.review.title;
@@ -112,6 +72,38 @@
     self.review.rating = decimal;
 }
 
+#pragma mark - setupCancel
+-(void) setupCancel
+{
+    if (self.isModal) {
+        UIBarButtonItem *cancelButton = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPressed:)]autorelease];
+        self.navigationItem.leftBarButtonItem = cancelButton;
+    }
+    self.scrollView.contentSize = self.contentView.frame.size;
+}
+
+-(IBAction)cancelPressed:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)setupView
+{
+    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)]autorelease];
+    tap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tap];
+}
+
+-(IBAction) dismissKeyboard
+{
+    [self.titleValue resignFirstResponder];
+    [self.ratingValue resignFirstResponder];
+    [self.commentValue resignFirstResponder];
+    [self setValueForReview];
+}
+
+
+#pragma mark - setupSave
 -(void)setupNav
 {
     UIBarButtonItem *button = [[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(savePressed:)]autorelease];
@@ -145,13 +137,21 @@
 
 #pragma mark - Validate
 
+-(BOOL)textFieldisValid:(NSString *)textField
+{
+    BOOL textFieldisNil = textField != Nil;
+    BOOL textFieldisEmpty = textField != Nil;
+    
+    return (textFieldisEmpty && textFieldisNil);
+}
+
 -(NSString*)validateReview
 {
     NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
     [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
     NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.review.rating]];
     
-    if (([self.review.title isEqualToString:@""]) && ([string isEqualToString:@""])) {
+    if ((![self textFieldisValid:self.review.title]) || (![self textFieldisValid:string])) {
         return @"can you must enter a title and rating please";
     }
     return @"";
@@ -186,24 +186,17 @@
     self.fieldState = NO;
 }
 
+#pragma mark - unload
 - (void)viewDidUnload
 {
-    self.titleLabel = nil;
     self.titleValue = nil;
-    self.ratingLabel = nil;
     self.ratingValue = nil;
-    self.commentLabel = nil;
     self.commentValue = nil;
     self.scrollView = nil;
     self.contentView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)dealloc {

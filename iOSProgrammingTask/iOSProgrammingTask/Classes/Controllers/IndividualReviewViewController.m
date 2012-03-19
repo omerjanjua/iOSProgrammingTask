@@ -19,19 +19,9 @@
 @synthesize titleLabel = _titleLabel;
 @synthesize ratingLabel = _ratingLabel;
 @synthesize commentsTextview = _commentsTextview;
-@synthesize isModal = _isModal;
 @synthesize review = _review;
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
+#pragma mark - viewDidLoad
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,8 +35,13 @@
     [self setupReview];
 }
 
-#pragma mark - setup
+#pragma mark - setupNav
+-(void)setupNav
+{
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
+}
 
+#pragma mark - setupReview
 -(void)setupReview
 {
     if (!self.review) {
@@ -70,33 +65,19 @@
     
     NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
     [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.review.rating]];
+    NSString *string = [[[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.review.rating]]autorelease];
     string = @"";
 }
 
-
+#pragma mark - unLoad
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    self.titleLabel = nil;
+    self.ratingLabel = nil;
+    self.commentsTextview = nil;    
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
--(void)setupNav
-{
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
-}
-
-- (void)dealloc {
-
-    self.title = nil;
-    self.ratingLabel = nil;
-    self.commentsTextview = nil;
-    [super dealloc];
-}
 @end
