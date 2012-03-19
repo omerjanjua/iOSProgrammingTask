@@ -20,7 +20,8 @@
 -(void)setupView;
 -(void)resetViewPosition;
 
--(NSString*)validateBooks;
+-(BOOL)textFieldisValid:(NSString *)textField;
+-(NSString*)validateOrder;
 
 @end
 
@@ -162,7 +163,7 @@
         [self setupInitialBookValues];
     }
     [self setValueForBooks];
-    NSString *validate = [self validateBooks];
+    NSString *validate = [self validateOrder];
     if ([validate isEqualToString:@""]) {
         [self.book.managedObjectContext save];
         
@@ -182,9 +183,17 @@
 
 #pragma mark - Validate
 
--(NSString*)validateBooks
+-(BOOL)textFieldisValid:(NSString *)textField
 {
-    if (([self.book.name isEqualToString:@""]) && ([self.book.authors isEqualToString:@""]) && ([self.book.publishers isEqualToString:@""])) {
+    BOOL textFieldisEmpty = textField != Nil;
+    BOOL textFieldisNil = textField != Nil;
+    
+    return (textFieldisEmpty && textFieldisNil);    
+}
+
+-(NSString*)validateOrder
+{
+    if (([self textFieldisValid:self.book.name]) && ([self textFieldisValid:self.book.authors]) && ([self textFieldisValid:self.book.publishers])) {
         return @"can you must enter a title, author and publisher please";
     }
     return @"";

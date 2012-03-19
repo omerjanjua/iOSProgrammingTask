@@ -100,19 +100,10 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewDidUnload
-{
-
-    [super viewDidUnload];
-    //self.tableView = nil;
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 - (void)dealloc
 {
-    [super dealloc];
     self.books = nil;
+    [super dealloc];
 }
 
 @end
