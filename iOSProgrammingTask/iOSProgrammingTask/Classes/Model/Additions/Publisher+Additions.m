@@ -15,8 +15,14 @@
     Publisher* publisher = [Publisher createEntity];
     
     publisher.name = [dictionary objectForKey:@"Name"];
+    publisher.identifier = [dictionary objectForKey:@"Identifier"];
     
     return publisher;
+}
+
++(Publisher*)publisherByIdentifier:(NSNumber*)identifier
+{
+    return [Publisher findFirstByAttribute:@"identifier" withValue:identifier];
 }
 
 @end

@@ -7,6 +7,10 @@
 //
 
 #import "EditBookViewController.h"
+#import "Additions.h"
+#import "NSDate+Additions.h"
+#import "ActionSheetPicker.h"
+
 
 @interface EditBookViewController ()
 
@@ -19,6 +23,8 @@
 -(void)bookDeleted;
 -(void)setupView;
 -(void)resetViewPosition;
+-(void)loadDate;
+-(void)loadPrice;
 
 -(BOOL)textFieldisValid:(NSString *)textField;
 -(NSString*)validateOrder;
@@ -35,10 +41,15 @@
 @synthesize publisherValue = _publisherValue;
 @synthesize reviewValue = _reviewValue;
 @synthesize deleteButton = _deleteButton;
+@synthesize priceButton = _priceButton;
+@synthesize priceLabel = _priceLabel;
+@synthesize dateButton = _dateButton;
+@synthesize dateLabel = _dateLabel;
 @synthesize book = _book;
 @synthesize deleteDelegate = _deleteDelegate;
 @synthesize isModal = _isModal;
 @synthesize fieldState = _fieldState;
+@synthesize isEdit = _isEdit;
 
 #pragma mark - View didLoad
 - (void)viewDidLoad
@@ -55,31 +66,68 @@
 -(void) setupBooks
 {
     self.nameValue.text = self.book.name;
-    self.authorsValue.text = self.book.authors;
-    self.publisherValue.text = self.book.publishers;
-    self.reviewValue.text = self.book.reviews;
+
+    NSMutableString *authorString = [NSMutableString string];
+    NSArray *authorArray = [self.book.authors allObjects];
+    for (Author *author in authorArray) {
+        [authorString appendFormat:@"%@, %@", author.surname, author.firstName];
+    }
+    self.authorsValue.text = authorString;
     
-    NSDateFormatter *currentDate = [[NSDateFormatter alloc] init];
+    
+    NSMutableString *publisherString = [NSMutableString string];
+    NSArray *publisherArray = [self.book.publishers allObjects];
+    for (Publisher *publisher in publisherArray) {
+        [publisherString appendFormat:@"%@", publisher.name];
+    }
+    self.publisherValue.text = publisherString;
+    
+    
+    NSMutableString *reviewString = [NSMutableString string];
+    NSArray *reviewArray = [self.book.reviews allObjects];
+    for (Review *review in reviewArray) {
+        [reviewString appendFormat:@"%@, %@", review.rating];
+    }
+    self.reviewValue.text = reviewString;
+    
+    NSDateFormatter *currentDate = [[[NSDateFormatter alloc] init]autorelease];
     [currentDate setDateFormat:@"dd-MM-yyyy"];
     NSString *stringFromDate = [currentDate stringFromDate:self.book.releaseDate];
     self.releaseValue.text = stringFromDate;
     
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.book.price]];
-    self.priceValue.text = string;
+    
+    self.priceValue.text = [self.book.price stringValue];
     
 }
 
 -(void)setValueForBooks
 {
     self.book.name = self.nameValue.text;
-    self.book.authors = self.authorsValue.text;
-    self.book.publishers = self.publisherValue.text;
-    self.book.reviews = self.reviewValue.text;
+    
+    NSMutableSet *authorSet = [NSMutableSet set];/////
+    NSArray *authorArray = [self.book.authors allObjects];
+    for (Author *author in authorArray) {
+        [authorSet addObject:self.authorsValue.text];
+    }
+    self.book.authors = authorSet;
+
+    NSMutableSet *publisherSet = [NSMutableSet set];
+    NSArray *publisherArray = [self.book.publishers allObjects];
+    for (Publisher *publisher in publisherArray) {
+        [publisherSet addObject:self.publisherValue.text];
+    }
+    self.book.publishers = publisherSet;
+    
+    NSMutableSet *reviewSet = [NSMutableSet set];
+    NSArray *reviewArray = [self.book.reviews allObjects];
+    for (Review *review in reviewArray) {
+        [reviewSet addObject:self.reviewValue.text];
+    }
+    self.book.reviews = reviewSet;
+    
     
     NSDateFormatter *currentDate = [[[NSDateFormatter alloc] init]autorelease];
-    [currentDate setDateFormat:@"dd-MMMM-yyyy"];
+    [currentDate setDateFormat:@"dd-MM-yyyy"];
     NSDate *dateFromString = [currentDate dateFromString:self.releaseValue.text];
     self.book.releaseDate = dateFromString;
     
@@ -90,20 +138,33 @@
 -(void)setupInitialBookValues
 {
     self.book.name = @"";
-    self.book.authors = @"";
-    self.book.publishers = @"";
-    self.book.reviews = @"";
+
+    NSMutableString *authorString = [NSMutableString string];
+    NSArray *authorArray = [self.book.authors allObjects];
+    for (Author *author in authorArray) {
+        [authorString stringByAppendingFormat:@""];
+    }
+    self.authorsValue.text = authorString;
     
-    NSDateFormatter *currentDate = [[NSDateFormatter alloc] init];
-    [currentDate setDateFormat:@"dd-MM-yyyy"];
-    NSString *stringFromDate = [currentDate stringFromDate:self.book.releaseDate];
-    stringFromDate = @"";
     
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.book.price]];
-    string = @"";
+    NSMutableString *publisherString = [NSMutableString string];
+    NSArray *publisherArray = [self.book.publishers allObjects];
+    for (Publisher *publisher in publisherArray) {
+        [publisherString stringByAppendingFormat:@""];
+    }
+    self.publisherValue.text = publisherString;
     
+    
+    NSMutableString *reviewString = [NSMutableString string];
+    NSArray *reviewArray = [self.book.reviews allObjects];
+    for (Review *review in reviewArray) {
+        [reviewString stringByAppendingFormat:@""];
+    }
+    self.reviewValue.text = reviewString;
+    
+    
+    self.book.releaseDate = Nil;
+    self.book.price = Nil;
 }
 
 #pragma mark - cancelPressed
@@ -118,6 +179,7 @@
 
 -(IBAction)cancelPressed:(id)sender
 {
+    [self.book.managedObjectContext reset];
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -166,7 +228,20 @@
 
 -(NSString*)validateOrder
 {
-    if ((![self textFieldisValid:self.book.name]) || (![self textFieldisValid:self.book.authors]) || (![self textFieldisValid:self.book.publishers])) {
+    NSMutableString *authorString = [NSMutableString string];
+    NSArray *authorArray = [self.book.authors allObjects];
+    for (Author *author in authorArray) {
+        [authorString stringByAppendingFormat:@""];
+    }
+    
+    
+    NSMutableString *publisherString = [NSMutableString string];
+    NSArray *publisherArray = [self.book.publishers allObjects];
+    for (Publisher *publisher in publisherArray) {
+        [publisherString stringByAppendingFormat:@""];
+    }
+    
+    if ((![self textFieldisValid:self.book.name]) || (![self textFieldisValid:authorString]) || (![self textFieldisValid:publisherString])) {
         return @"can you must enter a title, author and publisher please";
     }
     return @"";
@@ -265,8 +340,47 @@
     [self.authorsValue resignFirstResponder];
     [self.publisherValue resignFirstResponder];
     [self.reviewValue resignFirstResponder];
-    [self setValueForBooks];
+  /////  [self setValueForBooks];
 }
+
+#pragma mark - PickerView
+-(IBAction)priceButtonPressed
+{
+    [ActionSheetPicker displayActionPickerWithView:self.view data:UIDatePickerModeTime selectedIndex:self.book.price target:self action:@selector(priceSelected:) title:@"Price selected"];
+}
+
+-(IBAction)dateButtonPressed
+{
+    [ActionSheetPicker displayActionPickerWithView:self.view datePickerMode:UIDatePickerModeDate selectedDate:self.book.releaseDate target:self action:@selector(dateSelected:) title:@"Date select"];
+}
+
+-(void)dateSelected: (NSDate *)selectedDate
+{
+    self.book.releaseDate = selectedDate;
+    if (self.isEdit) {[self.book.managedObjectContext save];}
+    [self loadDate];
+}
+     
+-(void)priceSelected: (NSDecimalNumber *)selectedPrice
+{
+    self.book.price = selectedPrice;
+    if (self.isEdit) {
+        [self.book.managedObjectContext save];}
+    [self loadPrice];
+}
+
+-(void)loadDate
+{
+    NSString *dateString = [NSDate stringFromDateWithFormat:self.book.releaseDate format:@"dd/MM/yyyy"];
+    self.dateLabel.text = [NSString stringWithFormat:@"%@", dateString];
+}
+     
+-(void)loadPrice
+{
+    
+}
+
+#pragma mark - unload+dealloc
 
 - (void)viewDidUnload
 {
@@ -279,11 +393,19 @@
     self.publisherValue = nil;
     self.reviewValue = nil;
     self.deleteButton = nil;
+    [self setPriceButton:nil];
+    [self setPriceLabel:nil];
+    [self setDateButton:nil];
+    [self setDateLabel:nil];
     [super viewDidUnload];
 }
 
 - (void)dealloc {
     self.book = nil;
+    [_priceButton release];
+    [_priceLabel release];
+    [_dateButton release];
+    [_dateLabel release];
     [super dealloc];
 }
 @end

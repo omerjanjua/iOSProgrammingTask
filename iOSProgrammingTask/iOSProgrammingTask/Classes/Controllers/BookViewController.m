@@ -10,6 +10,7 @@
 #import "BookTableCell.h"
 #import "EditBookViewController.h"
 #import "IndividualBookViewController.h"
+#import "Author+Additions.h"
 
 @implementation BookViewController
 
@@ -70,14 +71,20 @@
     
     Book *book = [self.books objectAtIndex:indexPath.row];
     cell.name.text = book.name;
-    cell.author.text = book.authors;
+    cell.price.text = [book.price stringValue];
+
     
-    #warning TODO refactor this later on so you get the float/double value from nssnumber and convert that to string
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:book.price]];
-    cell.price.text = string;
-        
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    NSMutableString *mutableString = [NSMutableString string];
+    NSArray *array = [book.authors allObjects];
+    for (Author *author in array) {
+        [mutableString appendFormat:@"%@, %@", author.surname, author.firstName];
+    }
+    
+    cell.author.text = mutableString;
+    
+    //iterate through the json object and get authors firstname and lastname, convert it into a string and assign the value to the textifeld
+    
     return cell;
 }
 

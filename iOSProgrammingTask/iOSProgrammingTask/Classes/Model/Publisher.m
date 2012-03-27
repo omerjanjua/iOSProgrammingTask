@@ -2,7 +2,7 @@
 //  Publisher.m
 //  iOSProgrammingTask
 //
-//  Created by Omer Janjua on 24/02/2012.
+//  Created by Omer Janjua on 22/03/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -12,6 +12,7 @@
 
 @implementation Publisher
 
+@dynamic identifier;
 @dynamic name;
 @dynamic bookPublisher;
 

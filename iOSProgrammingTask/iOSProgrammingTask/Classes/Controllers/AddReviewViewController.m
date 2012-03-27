@@ -45,18 +45,12 @@
 #pragma mark - setupReview
 -(void)setupReview
 {
-    self.titleValue.text = self.review.title;
     self.commentValue.text = self.review.comment;
-    
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.review.rating]];
-    self.ratingValue.text = string;
+    self.ratingValue.text = [self.review.rating stringValue];
 }
 
 -(void)setValueForReview
 {
-    self.review.title = self.titleValue.text;
     self.review.comment = self.commentValue.text;
     
     NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:self.ratingValue.text];
@@ -65,7 +59,6 @@
 
 -(void)setupInitialReviewValue
 {
-    self.review.title = @"";
     self.review.comment = @"";
     
     NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:@""];
@@ -147,12 +140,8 @@
 
 -(NSString*)validateReview
 {
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.review.rating]];
-    
-    if ((![self textFieldisValid:self.review.title]) || (![self textFieldisValid:string])) {
-        return @"can you must enter a title and rating please";
+    if ((![self textFieldisValid:[self.review.rating stringValue]])) {
+        return @"can you must enter a rating please";
     }
     return @"";
 }

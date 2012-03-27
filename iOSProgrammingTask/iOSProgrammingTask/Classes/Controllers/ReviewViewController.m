@@ -75,12 +75,9 @@
     }
     
     Review *review = [self.review objectAtIndex:indexPath.row];
-    cell.titleLabel.text = review.title;
     
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:review.rating]];
-    cell.ratingLabel.text = string;
+
+    cell.ratingLabel.text = [review.rating stringValue];
     
     
     
@@ -118,8 +115,8 @@
 
 -(void) dealloc
 {
-    [super dealloc];
     self.review = nil;
+    [super dealloc];
 }
 
 @end

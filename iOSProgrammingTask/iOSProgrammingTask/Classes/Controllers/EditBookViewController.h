@@ -22,8 +22,15 @@
 @property (retain, nonatomic) IBOutlet UITextField *reviewValue;
 @property (retain, nonatomic) IBOutlet UIButton *deleteButton;
 
+@property (retain, nonatomic) IBOutlet UIButton *priceButton;
+@property (retain, nonatomic) IBOutlet UILabel *priceLabel;
+@property (retain, nonatomic) IBOutlet UIButton *dateButton;
+@property (retain, nonatomic) IBOutlet UILabel *dateLabel;
+
+
 @property (nonatomic, assign) id <BookDeleteDelegate> deleteDelegate;
 
+@property (nonatomic, assign) BOOL isEdit;
 @property (nonatomic, assign) BOOL isModal;
 @property (nonatomic, assign) BOOL fieldState;
 @property (nonatomic, retain) Book *book;
@@ -32,5 +39,8 @@
 -(IBAction)savePressed:(id)sender;
 -(IBAction)removeBookSelected:(id)sender;
 -(IBAction)dismissKeyboard;
+
+-(IBAction)priceButtonPressed;
+-(IBAction)dateButtonPressed;
 
 @end

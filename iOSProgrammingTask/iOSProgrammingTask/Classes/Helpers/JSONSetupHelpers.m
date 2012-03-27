@@ -18,19 +18,16 @@
     
     if (isFirstTime) 
     {
-        [JSONSetupHelpers booksFirstTime];
-        [JSONSetupHelpers authorsFirstTime];
-        [JSONSetupHelpers publishersFirstTime];
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        [JSONSetupHelpers importInitialauthors];
+        [JSONSetupHelpers importInitialpublishers];
+        [JSONSetupHelpers importInitialbooks];
     }
     [SettingsManager setFirstTimeComplete];
-    
-    [[NSManagedObjectContext defaultContext] save];
     
     return isFirstTime;
 }
 
-+(void)booksFirstTime
++(void)importInitialbooks
 {
     NSString *booksPath = [[NSBundle mainBundle] pathForResource:@"Books" ofType:@"json"];
     NSData *booksData = [NSData dataWithContentsOfFile:booksPath];
@@ -43,20 +40,25 @@
     [[NSManagedObjectContext contextForCurrentThread] save];
 }
 
-+(void)authorsFirstTime
++(void)importInitialauthors
 {
-    NSString *authorsPath = [[NSBundle mainBundle] pathForResource:@"Authors" ofType:@"json"];
+    NSLog(@"%@", [Author findAll]);
+
+    NSString *authorsPath = [[NSBundle mainBundle] pathForResource:@"Author" ofType:@"json"];
     NSData *authorsData = [NSData dataWithContentsOfFile:authorsPath];
     NSArray *authorsArray = [authorsData objectFromJSONData];
     
-    for (NSDictionary *authorsDictionay in authorsArray) 
+    for (NSDictionary *authorsDictionay in authorsArray) //for every object in authos array it expects it to be nsdictionary
     {
-        [Author authorForDictionary:authorsDictionay];
+        if ([authorsDictionay isKindOfClass:[NSDictionary class]]) { //if the object is a dictionary perform this check
+                [Author authorForDictionary:authorsDictionay];
+        }
+        
     }
     [[NSManagedObjectContext contextForCurrentThread] save];
 }
 
-+(void)publishersFirstTime
++(void)importInitialpublishers
 {
     NSString *publisherPath = [[NSBundle mainBundle] pathForResource:@"Publishers" ofType:@"json"];
     NSData *publisherData = [NSData dataWithContentsOfFile:publisherPath];

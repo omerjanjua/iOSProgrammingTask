@@ -7,26 +7,47 @@
 //
 
 #import "Book+Additions.h"
+#import "Author+Additions.h"
+#import "Publisher+Additions.h"
 
 @implementation Book (Additions)
 
 +(Book*)bookForDictionary:(NSDictionary*)dictionary
 {
     Book* book = [Book createEntity];   //fetching
-    
-    book.authors = [dictionary objectForKey:@"Authors"];
     book.name = [dictionary objectForKey:@"Name"];
     book.price = [dictionary objectForKey:@"Price"];
-    book.publishers = [dictionary objectForKey:@"Publishers"];
-    book.reviews = [dictionary objectForKey:@"Reviews"];
+    book.identifier = [dictionary objectForKey:@"Identifier"];
     
     NSDateFormatter *dateFormat = [[[NSDateFormatter alloc] init]autorelease];
-    [dateFormat setDateFormat:@"dd-MMMM-yyyy"];
+    [dateFormat setDateFormat:@"dd-MM-yyyy"];
     NSDate *dateFromString = [dateFormat dateFromString:[dictionary objectForKey:@"ReleaseDate"]];
     book.releaseDate = dateFromString;
+    
+    
+    NSArray *authorsArray = [dictionary objectForKey:@"Authors"];
+    for (NSNumber *authorID in authorsArray) {
+     
+      //  NSLog(@"%@", [Author findAll]);
+    Author *author = [Author authorByIdentifier:authorID];//breakppoint
+        [book addAuthorsObject:author];
+    }
+    
+    
+    NSArray *publishesArray = [dictionary objectForKey:@"Publishers"];
+    for (NSNumber *publisherId in publishesArray) {
+        Publisher *publisher = [Publisher publisherByIdentifier:publisherId];//breakpoint
+        [book addPublishersObject:publisher];
+    }
   
     return book;
 }
+
+
+
+
+
+
 
 
 

@@ -2,7 +2,7 @@
 //  Book.h
 //  iOSProgrammingTask
 //
-//  Created by Omer Janjua on 24/02/2012.
+//  Created by Omer Janjua on 22/03/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,29 +13,27 @@
 
 @interface Book : NSManagedObject
 
-@property (nonatomic, retain) NSString * authors;
+@property (nonatomic, retain) NSNumber * identifier;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDecimalNumber * price;
-@property (nonatomic, retain) NSString * publishers;
 @property (nonatomic, retain) NSDate * releaseDate;
-@property (nonatomic, retain) NSString * reviews;
-@property (nonatomic, retain) NSSet *author;
-@property (nonatomic, retain) NSSet *publisher;
-@property (nonatomic, retain) NSSet *review;
+@property (nonatomic, retain) NSSet *authors;
+@property (nonatomic, retain) NSSet *publishers;
+@property (nonatomic, retain) NSSet *reviews;
 @end
 
 @interface Book (CoreDataGeneratedAccessors)
 
-- (void)addAuthorObject:(Author *)value;
-- (void)removeAuthorObject:(Author *)value;
-- (void)addAuthor:(NSSet *)values;
-- (void)removeAuthor:(NSSet *)values;
-- (void)addPublisherObject:(Publisher *)value;
-- (void)removePublisherObject:(Publisher *)value;
-- (void)addPublisher:(NSSet *)values;
-- (void)removePublisher:(NSSet *)values;
-- (void)addReviewObject:(Review *)value;
-- (void)removeReviewObject:(Review *)value;
-- (void)addReview:(NSSet *)values;
-- (void)removeReview:(NSSet *)values;
+- (void)addAuthorsObject:(Author *)value;
+- (void)removeAuthorsObject:(Author *)value;
+- (void)addAuthors:(NSSet *)values;
+- (void)removeAuthors:(NSSet *)values;
+- (void)addPublishersObject:(Publisher *)value;
+- (void)removePublishersObject:(Publisher *)value;
+- (void)addPublishers:(NSSet *)values;
+- (void)removePublishers:(NSSet *)values;
+- (void)addReviewsObject:(Review *)value;
+- (void)removeReviewsObject:(Review *)value;
+- (void)addReviews:(NSSet *)values;
+- (void)removeReviews:(NSSet *)values;
 @end

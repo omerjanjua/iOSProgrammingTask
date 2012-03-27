@@ -11,8 +11,8 @@
 @interface JSONSetupHelpers : NSObject
 
 +(BOOL)performFirstTimeSetup;
-+(void)booksFirstTime;
-+(void)authorsFirstTime;
-+(void)publishersFirstTime;
++(void)importInitialbooks;
++(void)importInitialauthors;
++(void)importInitialpublishers;
 
 @end

@@ -13,11 +13,33 @@
 +(Author*)authorForDictionary:(NSDictionary*)dictionary
 {
     Author* author = [Author createEntity];
-    author.dob = [dictionary objectForKey:@"Dob"];
     author.firstName = [dictionary objectForKey:@"FirstName"];
-    author.surName = [dictionary objectForKey:@"SurName"];
+    author.surname = [dictionary objectForKey:@"Surname"];
+    author.identifier = [dictionary objectForKey:@"Identifier"];
     
+    NSDateFormatter *dateFormat = [[[NSDateFormatter alloc]init]autorelease];
+    [dateFormat setDateFormat:@"dd-MM-yyyy"];
+    NSDate *dateFromString = [dateFormat dateFromString:[dictionary objectForKey:@"Dob"]];
+    author.dob = dateFromString;
+    
+        
     return author;
+}
+
++(Author*)authorByIdentifier:(NSNumber*)identifer
+{
+//    NSNumber *number = [NSNumber numberWithInt:identifer];
+    return [Author findFirstByAttribute:@"identifier" withValue:identifer];
+}
+
++(Author*)authorFirstName:(NSString*)firstName
+{
+    return [Author findFirstByAttribute:@"firstName" withValue:firstName];
+}
+
++(Author*)authorsurname:(NSString*)surname
+{
+    return [Author findFirstByAttribute:@"surname" withValue:surname];
 }
 
 @end

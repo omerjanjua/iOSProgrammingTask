@@ -12,5 +12,6 @@
 @interface Publisher (Additions)
 
 +(Publisher*)publisherForDictionary:(NSDictionary*)dictionary;
++(Publisher*)publisherByIdentifier:(NSNumber*)identifier;
 
 @end

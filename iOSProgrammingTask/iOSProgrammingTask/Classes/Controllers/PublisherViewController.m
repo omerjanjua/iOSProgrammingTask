@@ -90,8 +90,8 @@
 
 -(void) dealloc 
 {
-    [super dealloc];
     self.publisher = nil;
+    [super dealloc];
 }
 
 @end

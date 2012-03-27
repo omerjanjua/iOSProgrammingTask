@@ -2,7 +2,7 @@
 //  Book.m
 //  iOSProgrammingTask
 //
-//  Created by Omer Janjua on 24/02/2012.
+//  Created by Omer Janjua on 22/03/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,14 +14,12 @@
 
 @implementation Book
 
-@dynamic authors;
+@dynamic identifier;
 @dynamic name;
 @dynamic price;
-@dynamic publishers;
 @dynamic releaseDate;
+@dynamic authors;
+@dynamic publishers;
 @dynamic reviews;
-@dynamic author;
-@dynamic publisher;
-@dynamic review;
 
 @end

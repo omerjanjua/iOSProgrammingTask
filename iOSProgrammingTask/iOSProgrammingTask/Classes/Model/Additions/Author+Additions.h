@@ -12,5 +12,8 @@
 @interface Author (Additions)
 
 +(Author*)authorForDictionary:(NSDictionary*)dictionary;
++(Author*)authorByIdentifier:(NSNumber*)identifer;
++(Author*)authorFirstName:(NSString*)firstName;
++(Author*)authorsurname:(NSString*)surname;
 
 @end

@@ -1,26 +1,26 @@
- [
+[
   {
+    "Identifier":1,
   "Name":"Do Androids Dream Of Electric Sheep?",
   "Price":4.69,
   "ReleaseDate":"01-Jan-1968",
-  "Authors":"Philip K. Dick",
-  "Publishers":"Phoenix",
-  "Reviews":""
+  "Authors":[1],
+  "Publishers":[1]
   },
   {
+    "Identifier":2,
   "Name":"Learning iPad Programming: A Hands-on Guide to Building iPad Apps with iOS 5",
   "Price":20.33,
   "ReleaseDate":"19-Dec-2011",
-  "Authors":"Kirby Turner, Tom Harrington",
-  "Publishers":"Addison Wesley",
-  "Reviews":""
+  "Authors":[2, 3],
+  "Publishers":[2]
   },
   {
+    "Identifier":3,
   "Name":"Ubik",
   "Price":4.69,
   "ReleaseDate":"01-Mar-1969",
-  "Authors":"Philip K. Dick",
-  "Publishers":"Phoenix",
-  "Reviews":""
+  "Authors":[1],
+  "Publishers":[1]
   }
-  ]
+]

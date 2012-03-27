@@ -68,8 +68,8 @@
 
 -(void) dealloc
 {
-    [super dealloc];
     self.author = nil;
+    [super dealloc];
 }
 
 @end

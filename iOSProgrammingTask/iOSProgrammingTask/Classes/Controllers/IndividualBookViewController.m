@@ -9,6 +9,9 @@
 #import "IndividualBookViewController.h"
 #import "BookViewController.h"
 #import "EditBookViewController.h"
+#import "Additions.h"
+#import "IterationHelper.h"
+
 
 @interface IndividualBookViewController ()
 -(void)setupBooks;
@@ -74,40 +77,71 @@
         [self setupInitialBookValues];
     }
     
-    self.nameValue.text = self.book.name;
-    self.authorValue.text = self.book.authors;
-    self.publisherValue.text = self.book.publishers;
-    self.reviewValue.text = self.book.reviews;
+    self.nameValue.text = self.book.name;    
     
-    NSDateFormatter *currentDate = [[NSDateFormatter alloc] init];
+    NSMutableString *authorString = [NSMutableString string];
+    NSArray *authorArray = [self.book.authors allObjects];
+    for (Author *author in authorArray) {
+        [authorString appendFormat:@"%@, %@", author.surname, author.firstName];
+    }
+    self.authorValue.text = authorString;
+    
+    
+    NSMutableString *publisherString = [NSMutableString string];
+    NSArray *publisherArray = [self.book.publishers allObjects];
+    for (Publisher *publisher in publisherArray) {
+        [publisherString appendFormat:@"%@", publisher.name];
+    }
+    self.publisherValue.text = publisherString;
+    
+    
+    NSMutableString *reviewString = [NSMutableString string];
+    NSArray *reviewArray = [self.book.reviews allObjects];
+    for (Review *review in reviewArray) {
+        [reviewString appendFormat:@"%@, %@", review.rating];
+    }
+    self.reviewValue.text = reviewString;
+    
+    
+    NSDateFormatter *currentDate = [[[NSDateFormatter alloc] init]autorelease];
     [currentDate setDateFormat:@"dd-MM-yyyy"];
     NSString *stringFromDate = [currentDate stringFromDate:self.book.releaseDate];
     self.releaseValue.text = stringFromDate;
     
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.book.price]];
-    self.priceValue.text = string;
+
+    self.priceValue.text = [self.book.price stringValue];
     
 }
 
 -(void)setupInitialBookValues
 {
     self.book.name = @"";
-    self.book.authors = @"";
-    self.book.publishers = @"";
-    self.book.reviews = @"";
+
+    NSMutableString *authorString = [NSMutableString string];
+    NSArray *authorArray = [self.book.authors allObjects];
+    for (Author *author in authorArray) {
+        [authorString stringByAppendingFormat:@""];
+    }
+    self.authorValue.text = authorString;
     
-    NSDateFormatter *currentDate = [[NSDateFormatter alloc] init];
-    [currentDate setDateFormat:@"dd-MM-yyyy"];
-    NSString *stringFromDate = [currentDate stringFromDate:self.book.releaseDate];
-    stringFromDate = @"";
     
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.book.price]];
-    string = @"";
+    NSMutableString *publisherString = [NSMutableString string];
+    NSArray *publisherArray = [self.book.publishers allObjects];
+    for (Publisher *publisher in publisherArray) {
+        [publisherString stringByAppendingFormat:@""];;
+    }
+    self.publisherValue.text = publisherString;
     
+    
+    NSMutableString *reviewString = [NSMutableString string];
+    NSArray *reviewArray = [self.book.reviews allObjects];
+    for (Review *review in reviewArray) {
+        [reviewString stringByAppendingFormat:@""];
+    }
+    self.reviewValue.text = reviewString;
+    
+    self.book.releaseDate = Nil;
+    self.book.price = Nil;
 }
 
 #pragma mark - unload outlets
@@ -125,6 +159,12 @@
     self.reviewValue = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+-(void)dealloc
+{
+    self.book = nil;
+    [super dealloc];
 }
 
 

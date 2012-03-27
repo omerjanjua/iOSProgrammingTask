@@ -49,24 +49,16 @@
         self.review = review;
         [self setupInitialReviewValvues];
     }
-    self.titleLabel.text = self.review.title;
     self.commentsTextview.text = self.review.comment;
     
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.review.rating]];
-    self.ratingLabel.text = string;
+
+    self.ratingLabel.text = [self.review.rating stringValue];
 }
 
 -(void)setupInitialReviewValvues
 {
-    self.review.title = @"";
     self.review.comment = @"";
-    
-    NSNumberFormatter *numberformatter = [[NSNumberFormatter alloc] init];
-    [numberformatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *string = [[[NSString alloc] initWithFormat:@"%@", [numberformatter stringFromNumber:self.review.rating]]autorelease];
-    string = @"";
+    self.review.rating = Nil;
 }
 
 #pragma mark - unLoad
