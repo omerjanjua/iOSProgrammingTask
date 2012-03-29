@@ -10,23 +10,20 @@
 #import "Book.h"
 #import "BookDeleteDelegate.h"
 
-@interface EditBookViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate>
+@interface EditBookViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) IBOutlet UIView *contentView;
 @property (retain, nonatomic) IBOutlet UITextField *nameValue;
-@property (retain, nonatomic) IBOutlet UITextField *priceValue;
 @property (retain, nonatomic) IBOutlet UITextField *releaseValue;
 @property (retain, nonatomic) IBOutlet UITextField *authorsValue;
 @property (retain, nonatomic) IBOutlet UITextField *publisherValue;
 @property (retain, nonatomic) IBOutlet UITextField *reviewValue;
 @property (retain, nonatomic) IBOutlet UIButton *deleteButton;
-
-@property (retain, nonatomic) IBOutlet UIButton *priceButton;
 @property (retain, nonatomic) IBOutlet UILabel *priceLabel;
-@property (retain, nonatomic) IBOutlet UIButton *dateButton;
 @property (retain, nonatomic) IBOutlet UILabel *dateLabel;
-
+@property (nonatomic, retain) IBOutlet UIPickerView *pickerView;
+@property (nonatomic, retain) NSArray *pickerArray;
 
 @property (nonatomic, assign) id <BookDeleteDelegate> deleteDelegate;
 

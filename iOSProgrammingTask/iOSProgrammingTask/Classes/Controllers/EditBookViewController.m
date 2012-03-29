@@ -9,8 +9,6 @@
 #import "EditBookViewController.h"
 #import "Additions.h"
 #import "NSDate+Additions.h"
-#import "ActionSheetPicker.h"
-
 
 @interface EditBookViewController ()
 
@@ -35,21 +33,20 @@
 @synthesize scrollView = _scrollView;
 @synthesize contentView = _contentView;
 @synthesize nameValue = _nameValue;
-@synthesize priceValue = _priceValue;
 @synthesize releaseValue = _releaseValue;
 @synthesize authorsValue = _authorsValue;
 @synthesize publisherValue = _publisherValue;
 @synthesize reviewValue = _reviewValue;
 @synthesize deleteButton = _deleteButton;
-@synthesize priceButton = _priceButton;
 @synthesize priceLabel = _priceLabel;
-@synthesize dateButton = _dateButton;
 @synthesize dateLabel = _dateLabel;
 @synthesize book = _book;
 @synthesize deleteDelegate = _deleteDelegate;
 @synthesize isModal = _isModal;
 @synthesize fieldState = _fieldState;
 @synthesize isEdit = _isEdit;
+@synthesize pickerArray = _pickerArray;
+@synthesize pickerView = _pickerView;
 
 #pragma mark - View didLoad
 - (void)viewDidLoad
@@ -58,7 +55,9 @@
     [self setupPage];
     [self setupBooks];
     [self setupNav];
-    [self setupView];
+    [self setupView];    
+    NSArray *numbers = [[[NSArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil]autorelease];
+    self.pickerArray = numbers;
 }
 
 #pragma mark - setupBooks
@@ -96,15 +95,15 @@
     self.releaseValue.text = stringFromDate;
     
     
-    self.priceValue.text = [self.book.price stringValue];
+    self.priceLabel.text = [self.book.price stringValue];
     
 }
 
 -(void)setValueForBooks
 {
     self.book.name = self.nameValue.text;
-    
-    NSMutableSet *authorSet = [NSMutableSet set];/////
+    #warning 
+    NSMutableSet *authorSet = [NSMutableSet set]; /////
     NSArray *authorArray = [self.book.authors allObjects];
     for (Author *author in authorArray) {
         [authorSet addObject:self.authorsValue.text];
@@ -131,7 +130,7 @@
     NSDate *dateFromString = [currentDate dateFromString:self.releaseValue.text];
     self.book.releaseDate = dateFromString;
     
-    NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:self.priceValue.text];
+    NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:self.priceLabel.text];
     self.book.price = decimal;
 }
 
@@ -279,9 +278,6 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField == self.nameValue) {
-        [self.priceValue becomeFirstResponder];
-    }
-    else if (textField == self.priceValue) {
         [self.releaseValue becomeFirstResponder];
     }
     else if (textField == self.releaseValue) {
@@ -335,23 +331,51 @@
 - (IBAction) dismissKeyboard
 {
     [self.nameValue resignFirstResponder];
-    [self.priceValue resignFirstResponder];
+    [self.priceLabel resignFirstResponder];
     [self.releaseValue resignFirstResponder];
     [self.authorsValue resignFirstResponder];
     [self.publisherValue resignFirstResponder];
     [self.reviewValue resignFirstResponder];
-  /////  [self setValueForBooks];
+#warning  /////  [self setValueForBooks];
 }
 
 #pragma mark - PickerView
 -(IBAction)priceButtonPressed
 {
-    [ActionSheetPicker displayActionPickerWithView:self.view data:UIDatePickerModeTime selectedIndex:self.book.price target:self action:@selector(priceSelected:) title:@"Price selected"];
+    NSInteger row1 = [self.pickerView selectedRowInComponent:0];
+    NSInteger row2 = [self.pickerView selectedRowInComponent:1];
+    NSInteger row3 = [self.pickerView selectedRowInComponent:2];
+    NSInteger row4 = [self.pickerView selectedRowInComponent:3];
+    
+    
+    NSString *s1 = [self.pickerArray objectAtIndex:row1];
+    NSString *s2 = [self.pickerArray objectAtIndex:row2];
+    NSString *s3 = [self.pickerArray objectAtIndex:row3];
+    NSString *s4 = [self.pickerArray objectAtIndex:row4];
+    
+    NSString *stringRow = [NSString stringWithFormat:@"£%@%@.%@%@", s1, s2, s3, s4];
+    
+    self.priceLabel.text = stringRow;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 4;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.pickerArray count];
+}
+
+-(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [self.pickerArray objectAtIndex:row];
 }
 
 -(IBAction)dateButtonPressed
 {
-    [ActionSheetPicker displayActionPickerWithView:self.view datePickerMode:UIDatePickerModeDate selectedDate:self.book.releaseDate target:self action:@selector(dateSelected:) title:@"Date select"];
+   // [ActionSheetPicker displayActionPickerWithView:self.view datePickerMode:UIDatePickerModeDate selectedDate:self.book.releaseDate target:self action:@selector(dateSelected:) title:@"Date select"];
 }
 
 -(void)dateSelected: (NSDate *)selectedDate
@@ -377,7 +401,9 @@
      
 -(void)loadPrice
 {
-    
+    NSString *priceString = [self.book.price stringValue];
+    NSString *format = [[[NSString alloc]initWithFormat:@"%@", priceString]autorelease];
+    self.priceLabel.text = format;
 }
 
 #pragma mark - unload+dealloc
@@ -387,25 +413,20 @@
     self.scrollView = nil;
     self.contentView = nil;
     self.nameValue = nil;
-    self.priceValue = nil;
     self.releaseValue = nil;
     self.authorsValue = nil;
     self.publisherValue = nil;
     self.reviewValue = nil;
     self.deleteButton = nil;
-    [self setPriceButton:nil];
-    [self setPriceLabel:nil];
-    [self setDateButton:nil];
-    [self setDateLabel:nil];
+    self.priceLabel = nil;
+    self.dateLabel = nil;
+    self.pickerView = nil;
+    self.pickerArray = nil;
     [super viewDidUnload];
 }
 
 - (void)dealloc {
     self.book = nil;
-    [_priceButton release];
-    [_priceLabel release];
-    [_dateButton release];
-    [_dateLabel release];
     [super dealloc];
 }
 @end

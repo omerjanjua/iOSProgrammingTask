@@ -10,7 +10,7 @@
     <entity name="Book" representedClassName="Book" syncable="YES">
         <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="releaseDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="authors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Author" inverseName="bookAuthor" inverseEntity="Author" syncable="YES"/>
         <relationship name="publishers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Publisher" inverseName="bookPublisher" inverseEntity="Publisher" syncable="YES"/>
@@ -29,7 +29,7 @@
     </entity>
     <elements>
         <element name="Author" positionX="-236" positionY="117" width="128" height="120"/>
-        <element name="Book" positionX="61" positionY="225" width="128" height="180"/>
+        <element name="Book" positionX="61" positionY="225" width="128" height="150"/>
         <element name="Publisher" positionX="-189" positionY="432" width="128" height="75"/>
         <element name="Review" positionX="405" positionY="99" width="128" height="105"/>
     </elements>
