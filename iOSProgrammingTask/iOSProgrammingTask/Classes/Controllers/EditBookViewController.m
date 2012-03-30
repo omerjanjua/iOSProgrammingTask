@@ -33,7 +33,6 @@
 @synthesize scrollView = _scrollView;
 @synthesize contentView = _contentView;
 @synthesize nameValue = _nameValue;
-@synthesize releaseValue = _releaseValue;
 @synthesize authorsValue = _authorsValue;
 @synthesize publisherValue = _publisherValue;
 @synthesize reviewValue = _reviewValue;
@@ -46,7 +45,9 @@
 @synthesize fieldState = _fieldState;
 @synthesize isEdit = _isEdit;
 @synthesize pickerArray = _pickerArray;
-@synthesize pickerView = _pickerView;
+@synthesize pickerView =_pickerView;
+@synthesize datePicker = _datePicker;
+@synthesize pickerType = _pickerType;
 
 #pragma mark - View didLoad
 - (void)viewDidLoad
@@ -92,7 +93,7 @@
     NSDateFormatter *currentDate = [[[NSDateFormatter alloc] init]autorelease];
     [currentDate setDateFormat:@"dd-MM-yyyy"];
     NSString *stringFromDate = [currentDate stringFromDate:self.book.releaseDate];
-    self.releaseValue.text = stringFromDate;
+    self.dateLabel.text = stringFromDate;
     
     
     self.priceLabel.text = [self.book.price stringValue];
@@ -127,7 +128,7 @@
     
     NSDateFormatter *currentDate = [[[NSDateFormatter alloc] init]autorelease];
     [currentDate setDateFormat:@"dd-MM-yyyy"];
-    NSDate *dateFromString = [currentDate dateFromString:self.releaseValue.text];
+    NSDate *dateFromString = [currentDate dateFromString:self.dateLabel.text];
     self.book.releaseDate = dateFromString;
     
     NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:self.priceLabel.text];
@@ -278,9 +279,6 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField == self.nameValue) {
-        [self.releaseValue becomeFirstResponder];
-    }
-    else if (textField == self.releaseValue) {
         [self.authorsValue becomeFirstResponder];
     }
     else if (textField == self.authorsValue) {
@@ -332,7 +330,6 @@
 {
     [self.nameValue resignFirstResponder];
     [self.priceLabel resignFirstResponder];
-    [self.releaseValue resignFirstResponder];
     [self.authorsValue resignFirstResponder];
     [self.publisherValue resignFirstResponder];
     [self.reviewValue resignFirstResponder];
@@ -342,20 +339,44 @@
 #pragma mark - PickerView
 -(IBAction)priceButtonPressed
 {
-    NSInteger row1 = [self.pickerView selectedRowInComponent:0];
-    NSInteger row2 = [self.pickerView selectedRowInComponent:1];
-    NSInteger row3 = [self.pickerView selectedRowInComponent:2];
-    NSInteger row4 = [self.pickerView selectedRowInComponent:3];
+    UIActionSheet *menu = [[[UIActionSheet alloc] initWithTitle:@"Please Set a Book Price" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:@"Cancel" otherButtonTitles:nil, nil]autorelease];
     
+    UIPickerView *pickerView = [[[UIPickerView alloc]initWithFrame:CGRectMake(0, 185, 0, 0)]autorelease];
+    pickerView.delegate = self;
+    pickerView.showsSelectionIndicator = YES;
+    self.pickerView = pickerView;//assigning the value of the view to the property then using the property to display clicked button at index
     
-    NSString *s1 = [self.pickerArray objectAtIndex:row1];
-    NSString *s2 = [self.pickerArray objectAtIndex:row2];
-    NSString *s3 = [self.pickerArray objectAtIndex:row3];
-    NSString *s4 = [self.pickerArray objectAtIndex:row4];
+    [menu addSubview:pickerView];
+    [menu showInView:self.view];
+    [menu setBounds:CGRectMake(0, 0, 320, 700)];
     
-    NSString *stringRow = [NSString stringWithFormat:@"£%@%@.%@%@", s1, s2, s3, s4];
-    
-    self.priceLabel.text = stringRow;
+    self.pickerType = PricePicker;
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) 
+    {        
+        if (self.pickerType == DatePicker) 
+        {
+            NSDate *date = [self.datePicker date];            
+            NSString *dateString = [NSDate stringFromDateWithFormat:date format:@"dd/MM/yyyy"];
+            self.dateLabel.text = [NSString stringWithFormat:@"%@", dateString];
+        }
+        else
+        {
+            NSInteger row1 = [self.pickerView selectedRowInComponent:0];
+            NSInteger row2 = [self.pickerView selectedRowInComponent:1];
+            NSInteger row3 = [self.pickerView selectedRowInComponent:2];
+            NSInteger row4 = [self.pickerView selectedRowInComponent:3];
+            NSString *s1 = [self.pickerArray objectAtIndex:row1];
+            NSString *s2 = [self.pickerArray objectAtIndex:row2];
+            NSString *s3 = [self.pickerArray objectAtIndex:row3];
+            NSString *s4 = [self.pickerArray objectAtIndex:row4];
+            NSString *stringRow = [NSString stringWithFormat:@"£%@%@.%@%@", s1, s2, s3, s4];
+            self.priceLabel.text = stringRow;
+        }
+    }
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -375,7 +396,17 @@
 
 -(IBAction)dateButtonPressed
 {
-   // [ActionSheetPicker displayActionPickerWithView:self.view datePickerMode:UIDatePickerModeDate selectedDate:self.book.releaseDate target:self action:@selector(dateSelected:) title:@"Date select"];
+    UIActionSheet *menu = [[[UIActionSheet alloc] initWithTitle:@"Please select a release date" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:@"Cancel" otherButtonTitles:nil, nil]autorelease];
+    
+    UIDatePicker *datePicker = [[[UIDatePicker alloc]initWithFrame:CGRectMake(0, 185, 0, 0)]autorelease];
+    
+    self.datePicker = datePicker;//assigning the value of the view to the property
+    [datePicker setDatePickerMode:UIDatePickerModeDate];//only showing date
+    [menu addSubview:datePicker];
+    [menu showInView:self.view];
+    [menu setBounds:CGRectMake(0, 0, 320, 700)];
+    
+    self.pickerType = DatePicker;//setting the enum to the property
 }
 
 -(void)dateSelected: (NSDate *)selectedDate
@@ -413,15 +444,15 @@
     self.scrollView = nil;
     self.contentView = nil;
     self.nameValue = nil;
-    self.releaseValue = nil;
     self.authorsValue = nil;
     self.publisherValue = nil;
     self.reviewValue = nil;
     self.deleteButton = nil;
     self.priceLabel = nil;
     self.dateLabel = nil;
-    self.pickerView = nil;
     self.pickerArray = nil;
+    self.pickerView = nil;
+    self.datePicker = nil;
     [super viewDidUnload];
 }
 
