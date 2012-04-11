@@ -7,6 +7,7 @@
 //
 
 #import "IndividualReviewViewController.h"
+#import "AddReviewViewController.h"
 
 @interface IndividualReviewViewController ()
 -(void)setupNav;

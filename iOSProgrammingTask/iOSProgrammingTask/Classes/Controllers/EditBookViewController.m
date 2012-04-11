@@ -9,6 +9,8 @@
 #import "EditBookViewController.h"
 #import "Additions.h"
 #import "NSDate+Additions.h"
+#import "AddReviewViewController.h"
+
 
 @interface EditBookViewController ()
 
@@ -33,21 +35,27 @@
 @synthesize scrollView = _scrollView;
 @synthesize contentView = _contentView;
 @synthesize nameValue = _nameValue;
-@synthesize authorsValue = _authorsValue;
-@synthesize publisherValue = _publisherValue;
-@synthesize reviewValue = _reviewValue;
+@synthesize reviewLabel = _reviewLabel;
 @synthesize deleteButton = _deleteButton;
 @synthesize priceLabel = _priceLabel;
 @synthesize dateLabel = _dateLabel;
+@synthesize authorLabel = _authorLabel;
+@synthesize publisherLabel = _publisherLabel;
 @synthesize book = _book;
 @synthesize deleteDelegate = _deleteDelegate;
 @synthesize isModal = _isModal;
 @synthesize fieldState = _fieldState;
 @synthesize isEdit = _isEdit;
-@synthesize pickerArray = _pickerArray;
-@synthesize pickerView =_pickerView;
+@synthesize priceArray = _priceArray;
+@synthesize pricePicker =_pricePicker;
 @synthesize datePicker = _datePicker;
 @synthesize pickerType = _pickerType;
+@synthesize authorsArray = _authorsArray;
+@synthesize publishersArray = _publishersArray;
+@synthesize authorPicker = _authorPicker;
+@synthesize publisherPicker = _publisherPicker;
+@synthesize selectedAuthor = _selectedAuthor;
+@synthesize selectedPublisher = _selectedPublisher;
 
 #pragma mark - View didLoad
 - (void)viewDidLoad
@@ -56,9 +64,13 @@
     [self setupPage];
     [self setupBooks];
     [self setupNav];
-    [self setupView];    
+  //  [self setupView];    
     NSArray *numbers = [[[NSArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil]autorelease];
-    self.pickerArray = numbers;
+    self.priceArray = numbers;
+    
+    self.authorsArray = [Author findAll];//looking for all authors instead of authors in my book property//todo
+    self.publishersArray = [Publisher findAll];
+    //self.publishersArray = [self.book.publishers allObjects];
 }
 
 #pragma mark - setupBooks
@@ -72,7 +84,7 @@
     for (Author *author in authorArray) {
         [authorString appendFormat:@"%@, %@", author.surname, author.firstName];
     }
-    self.authorsValue.text = authorString;
+    self.authorLabel.text = authorString;
     
     
     NSMutableString *publisherString = [NSMutableString string];
@@ -80,7 +92,7 @@
     for (Publisher *publisher in publisherArray) {
         [publisherString appendFormat:@"%@", publisher.name];
     }
-    self.publisherValue.text = publisherString;
+    self.publisherLabel.text = publisherString;
     
     
     NSMutableString *reviewString = [NSMutableString string];
@@ -88,7 +100,7 @@
     for (Review *review in reviewArray) {
         [reviewString appendFormat:@"%@, %@", review.rating];
     }
-    self.reviewValue.text = reviewString;
+    self.reviewLabel.text = reviewString;
     
     NSDateFormatter *currentDate = [[[NSDateFormatter alloc] init]autorelease];
     [currentDate setDateFormat:@"dd-MM-yyyy"];
@@ -100,31 +112,16 @@
     
 }
 
+#warning crash occuring on this methid still debugging
 -(void)setValueForBooks
 {
     self.book.name = self.nameValue.text;
-    #warning 
-    NSMutableSet *authorSet = [NSMutableSet set]; /////
-    NSArray *authorArray = [self.book.authors allObjects];
-    for (Author *author in authorArray) {
-        [authorSet addObject:self.authorsValue.text];
-    }
-    self.book.authors = authorSet;
 
-    NSMutableSet *publisherSet = [NSMutableSet set];
-    NSArray *publisherArray = [self.book.publishers allObjects];
-    for (Publisher *publisher in publisherArray) {
-        [publisherSet addObject:self.publisherValue.text];
-    }
+    NSSet *authorSet = [NSSet setWithObject:self.selectedAuthor]; ///// get the vallue which was assign to my propertty at the selected row index
+    self.book.authors = authorSet;
+    
+    NSSet *publisherSet = [NSSet setWithObject:self.selectedPublisher];
     self.book.publishers = publisherSet;
-    
-    NSMutableSet *reviewSet = [NSMutableSet set];
-    NSArray *reviewArray = [self.book.reviews allObjects];
-    for (Review *review in reviewArray) {
-        [reviewSet addObject:self.reviewValue.text];
-    }
-    self.book.reviews = reviewSet;
-    
     
     NSDateFormatter *currentDate = [[[NSDateFormatter alloc] init]autorelease];
     [currentDate setDateFormat:@"dd-MM-yyyy"];
@@ -144,7 +141,7 @@
     for (Author *author in authorArray) {
         [authorString stringByAppendingFormat:@""];
     }
-    self.authorsValue.text = authorString;
+    self.authorLabel.text = authorString;
     
     
     NSMutableString *publisherString = [NSMutableString string];
@@ -152,7 +149,7 @@
     for (Publisher *publisher in publisherArray) {
         [publisherString stringByAppendingFormat:@""];
     }
-    self.publisherValue.text = publisherString;
+    self.publisherLabel.text = publisherString;
     
     
     NSMutableString *reviewString = [NSMutableString string];
@@ -160,7 +157,7 @@
     for (Review *review in reviewArray) {
         [reviewString stringByAppendingFormat:@""];
     }
-    self.reviewValue.text = reviewString;
+    self.reviewLabel.text = reviewString;
     
     
     self.book.releaseDate = Nil;
@@ -242,7 +239,7 @@
     }
     
     if ((![self textFieldisValid:self.book.name]) || (![self textFieldisValid:authorString]) || (![self textFieldisValid:publisherString])) {
-        return @"can you must enter a title, author and publisher please";
+        return @"can you enter a title, author and publisher please";
     }
     return @"";
 }
@@ -276,22 +273,15 @@
 }
 
 #pragma mark - textfield
+/////need to test
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == self.nameValue) {
-        [self.authorsValue becomeFirstResponder];
-    }
-    else if (textField == self.authorsValue) {
-        [self.publisherValue becomeFirstResponder];
-    }
-    else if (textField == self.publisherValue) {
-        [self.reviewValue becomeFirstResponder];
-    }
-    else {
+    if (textField == self.nameValue) 
+    {
         [textField resignFirstResponder];
     }
+    
     [self setValueForBooks];
-
     return NO;
 }
 
@@ -329,14 +319,10 @@
 - (IBAction) dismissKeyboard
 {
     [self.nameValue resignFirstResponder];
-    [self.priceLabel resignFirstResponder];
-    [self.authorsValue resignFirstResponder];
-    [self.publisherValue resignFirstResponder];
-    [self.reviewValue resignFirstResponder];
-#warning  /////  [self setValueForBooks];
+    [self setValueForBooks];
 }
 
-#pragma mark - PickerView
+#pragma mark - PricePickerView
 -(IBAction)priceButtonPressed
 {
     UIActionSheet *menu = [[[UIActionSheet alloc] initWithTitle:@"Please Set a Book Price" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:@"Cancel" otherButtonTitles:nil, nil]autorelease];
@@ -344,13 +330,15 @@
     UIPickerView *pickerView = [[[UIPickerView alloc]initWithFrame:CGRectMake(0, 185, 0, 0)]autorelease];
     pickerView.delegate = self;
     pickerView.showsSelectionIndicator = YES;
-    self.pickerView = pickerView;//assigning the value of the view to the property then using the property to display clicked button at index
+    self.pricePicker = pickerView;//assigning the value of the view to the property then using the property to display clicked button at index
+
+    self.pickerType = PricePicker;
     
     [menu addSubview:pickerView];
     [menu showInView:self.view];
     [menu setBounds:CGRectMake(0, 0, 320, 700)];
     
-    self.pickerType = PricePicker;
+    
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -363,37 +351,93 @@
             NSString *dateString = [NSDate stringFromDateWithFormat:date format:@"dd/MM/yyyy"];
             self.dateLabel.text = [NSString stringWithFormat:@"%@", dateString];
         }
-        else
+        else if (self.pickerType == PricePicker)
         {
-            NSInteger row1 = [self.pickerView selectedRowInComponent:0];
-            NSInteger row2 = [self.pickerView selectedRowInComponent:1];
-            NSInteger row3 = [self.pickerView selectedRowInComponent:2];
-            NSInteger row4 = [self.pickerView selectedRowInComponent:3];
-            NSString *s1 = [self.pickerArray objectAtIndex:row1];
-            NSString *s2 = [self.pickerArray objectAtIndex:row2];
-            NSString *s3 = [self.pickerArray objectAtIndex:row3];
-            NSString *s4 = [self.pickerArray objectAtIndex:row4];
+            NSInteger row1 = [self.pricePicker selectedRowInComponent:0];
+            NSInteger row2 = [self.pricePicker selectedRowInComponent:1];
+            NSInteger row3 = [self.pricePicker selectedRowInComponent:2];
+            NSInteger row4 = [self.pricePicker selectedRowInComponent:3];
+            NSString *s1 = [self.priceArray objectAtIndex:row1];
+            NSString *s2 = [self.priceArray objectAtIndex:row2];
+            NSString *s3 = [self.priceArray objectAtIndex:row3];
+            NSString *s4 = [self.priceArray objectAtIndex:row4];
             NSString *stringRow = [NSString stringWithFormat:@"£%@%@.%@%@", s1, s2, s3, s4];
             self.priceLabel.text = stringRow;
+        }
+        else if (self.pickerType == AuthorPicker) {            
+            NSInteger row = [self.authorPicker selectedRowInComponent:0];
+            Author *author = [self.authorsArray objectAtIndex:row];
+            self.selectedAuthor = author;//assign to selected property for when saving to the NSSET later on
+            NSString *string = [NSString stringWithFormat:@"%@ %@", author.firstName, author.surname];
+            self.authorLabel.text = string;
+            
+        }
+        else if (self.pickerType == PublisherPicker) {
+            NSInteger row = [self.publisherPicker selectedRowInComponent:0];
+            Publisher *publisher = [self.publishersArray objectAtIndex:row];
+            self.selectedPublisher = publisher;
+            NSString *string = publisher.name;//can assign this directly to the label but keeping the variable for debugging purposes.
+            self.publisherLabel.text = string;
         }
     }
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return 4;
+    if (self.pickerType == PricePicker) 
+    {
+        return 4;
+    }
+    else {
+        return 1;
+    }
 }
+
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return [self.pickerArray count];
+    if (self.pickerType == PricePicker) 
+    {
+        return [self.priceArray count];
+    }
+    else if (self.pickerType == AuthorPicker) 
+    {
+        return [self.authorsArray count];
+    }
+    else if (self.pickerType == PublisherPicker) 
+    {
+        return [self.publishersArray count];
+    }
+    else 
+    {
+        return 0;
+    }
 }
 
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [self.pickerArray objectAtIndex:row];
+    if (self.pickerType == PricePicker) 
+    {
+        return [self.priceArray objectAtIndex:row];
+    }
+    else if (self.pickerType == AuthorPicker) 
+    {
+        Author *author = [self.authorsArray objectAtIndex:row];
+        NSString *string = [NSString stringWithFormat:@"%@ %@", author.firstName, author.surname];
+        return string;//instead of getting the entire object returnung the property of firstname instead.
+    }
+    else if (self.pickerType == PublisherPicker) 
+    {
+        Publisher *publisher = [self.publishersArray objectAtIndex:row];
+        return publisher.name;
+    }
+    else 
+    {
+        return 0;
+    }
 }
 
+#pragma mark - DatePickerView
 -(IBAction)dateButtonPressed
 {
     UIActionSheet *menu = [[[UIActionSheet alloc] initWithTitle:@"Please select a release date" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:@"Cancel" otherButtonTitles:nil, nil]autorelease];
@@ -402,20 +446,22 @@
     
     self.datePicker = datePicker;//assigning the value of the view to the property
     [datePicker setDatePickerMode:UIDatePickerModeDate];//only showing date
+    self.pickerType = DatePicker;//setting the enum to the property
     [menu addSubview:datePicker];
     [menu showInView:self.view];
     [menu setBounds:CGRectMake(0, 0, 320, 700)];
     
-    self.pickerType = DatePicker;//setting the enum to the property
+    
 }
 
+//why not being used anymore
 -(void)dateSelected: (NSDate *)selectedDate
 {
     self.book.releaseDate = selectedDate;
     if (self.isEdit) {[self.book.managedObjectContext save];}
     [self loadDate];
 }
-     
+ 
 -(void)priceSelected: (NSDecimalNumber *)selectedPrice
 {
     self.book.price = selectedPrice;
@@ -437,6 +483,52 @@
     self.priceLabel.text = format;
 }
 
+#pragma mark - AuthorPickerView
+-(IBAction)authorButtonPressed
+{
+    UIActionSheet *menu = [[[UIActionSheet alloc] initWithTitle:@"Please Set a Book Price" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:@"Cancel" otherButtonTitles:nil, nil]autorelease];
+    
+    UIPickerView *pickerView = [[[UIPickerView alloc]initWithFrame:CGRectMake(0, 185, 0, 0)]autorelease];
+    pickerView.delegate = self;
+    pickerView.showsSelectionIndicator = YES;
+    self.authorPicker = pickerView;
+   
+    self.pickerType = AuthorPicker;
+
+    [menu addSubview:pickerView];
+    [menu showInView:self.view];
+    [menu setBounds:CGRectMake(0, 0, 320, 700)];
+    
+}
+
+#pragma mark - PublisherPickerView
+-(IBAction)publisherButtonPressed
+{
+    UIActionSheet *menu = [[[UIActionSheet alloc] initWithTitle:@"Please Set a Book Price" delegate:self cancelButtonTitle:@"Done" destructiveButtonTitle:@"Cancel" otherButtonTitles:nil, nil]autorelease];
+    
+    UIPickerView *pickerView = [[[UIPickerView alloc]initWithFrame:CGRectMake(0, 185, 0, 0)]autorelease];
+    pickerView.delegate = self;
+    pickerView.showsSelectionIndicator = YES;
+    self.publisherPicker = pickerView;//assigning the value of the view to the property then using the property to display clicked button at index
+    
+    self.pickerType = PublisherPicker;//call this before its added to the subview so the enum is assigned properly
+    
+    [menu addSubview:pickerView];
+    [menu showInView:self.view];
+    [menu setBounds:CGRectMake(0, 0, 320, 700)];
+    
+}
+
+
+#pragma mark - Review 
+
+-(IBAction)reviewButtonPressed
+{
+    AddReviewViewController *controller = [[[AddReviewViewController alloc] initWithNibName:@"AddReviewView" bundle:Nil]autorelease];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+
 #pragma mark - unload+dealloc
 
 - (void)viewDidUnload
@@ -444,15 +536,21 @@
     self.scrollView = nil;
     self.contentView = nil;
     self.nameValue = nil;
-    self.authorsValue = nil;
-    self.publisherValue = nil;
-    self.reviewValue = nil;
+    self.reviewLabel = nil;
     self.deleteButton = nil;
     self.priceLabel = nil;
     self.dateLabel = nil;
-    self.pickerArray = nil;
-    self.pickerView = nil;
+    self.priceArray = nil;
+    self.pricePicker = nil;
     self.datePicker = nil;
+    self.authorLabel = nil;
+    self.publisherLabel = nil;
+    self.authorsArray = nil;
+    self.publishersArray = nil;
+    self.authorPicker = nil;
+    self.publisherPicker = nil;
+    self.selectedAuthor = nil;
+    self.selectedPublisher = nil;
     [super viewDidUnload];
 }
 

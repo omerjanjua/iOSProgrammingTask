@@ -29,14 +29,14 @@
     for (NSNumber *authorID in authorsArray) {
      
       //  NSLog(@"%@", [Author findAll]);
-    Author *author = [Author authorByIdentifier:authorID];//breakppoint
+    Author *author = [Author authorByIdentifier:authorID];/////breakppoint
         [book addAuthorsObject:author];
     }
     
     
     NSArray *publishesArray = [dictionary objectForKey:@"Publishers"];
     for (NSNumber *publisherId in publishesArray) {
-        Publisher *publisher = [Publisher publisherByIdentifier:publisherId];//breakpoint
+        Publisher *publisher = [Publisher publisherByIdentifier:publisherId];/////breakpoint
         [book addPublishersObject:publisher];
     }
   

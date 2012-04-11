@@ -19,8 +19,9 @@
 @property (retain, nonatomic) IBOutlet UILabel *releaseValue;
 @property (retain, nonatomic) IBOutlet UILabel *authorValue;
 @property (retain, nonatomic) IBOutlet UILabel *publisherValue;
-@property (retain, nonatomic) IBOutlet UILabel *reviewValue;
 
 @property (nonatomic, retain) Book *book;
+
+-(IBAction)reviewButtonPressed:(id)sender;
 
 @end

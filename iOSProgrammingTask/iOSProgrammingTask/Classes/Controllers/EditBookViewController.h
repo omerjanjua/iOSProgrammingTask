@@ -12,7 +12,9 @@
 
 typedef enum {
     DatePicker,
-    PricePicker
+    PricePicker,
+    AuthorPicker,
+    PublisherPicker
 }PickerType;
 
 @interface EditBookViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIActionSheetDelegate>
@@ -20,15 +22,19 @@ typedef enum {
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) IBOutlet UIView *contentView;
 @property (retain, nonatomic) IBOutlet UITextField *nameValue;
-@property (retain, nonatomic) IBOutlet UITextField *authorsValue;
-@property (retain, nonatomic) IBOutlet UITextField *publisherValue;
-@property (retain, nonatomic) IBOutlet UITextField *reviewValue;
 @property (retain, nonatomic) IBOutlet UIButton *deleteButton;
 @property (retain, nonatomic) IBOutlet UILabel *priceLabel;
 @property (retain, nonatomic) IBOutlet UILabel *dateLabel;
-@property (nonatomic, retain) NSArray *pickerArray;
-@property (nonatomic, retain) UIPickerView *pickerView;
+@property (retain, nonatomic) IBOutlet UILabel *authorLabel;
+@property (retain, nonatomic) IBOutlet UILabel *publisherLabel;
+@property (retain, nonatomic) IBOutlet UILabel *reviewLabel;
+@property (nonatomic, retain) NSArray *priceArray;
+@property (nonatomic, retain) NSArray *authorsArray;
+@property (nonatomic, retain) NSArray *publishersArray;
+@property (nonatomic, retain) UIPickerView *pricePicker;
 @property (nonatomic, retain) UIDatePicker *datePicker;
+@property (nonatomic, retain) UIPickerView *authorPicker;
+@property (nonatomic, retain) UIPickerView *publisherPicker;
 
 @property (nonatomic, assign) id <BookDeleteDelegate> deleteDelegate;
 @property (nonatomic, assign) PickerType pickerType;
@@ -36,6 +42,8 @@ typedef enum {
 @property (nonatomic, assign) BOOL isModal;
 @property (nonatomic, assign) BOOL fieldState;
 @property (nonatomic, retain) Book *book;
+@property (nonatomic, retain) Author *selectedAuthor;
+@property (nonatomic, retain) Publisher *selectedPublisher;
 
 -(IBAction)cancelPressed:(id)sender;
 -(IBAction)savePressed:(id)sender;
@@ -44,5 +52,8 @@ typedef enum {
 
 -(IBAction)priceButtonPressed;
 -(IBAction)dateButtonPressed;
+-(IBAction)authorButtonPressed;
+-(IBAction)publisherButtonPressed;
+-(IBAction)reviewButtonPressed;
 
 @end

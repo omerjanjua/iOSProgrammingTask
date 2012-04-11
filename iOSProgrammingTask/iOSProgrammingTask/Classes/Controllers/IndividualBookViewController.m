@@ -11,6 +11,7 @@
 #import "EditBookViewController.h"
 #import "Additions.h"
 #import "IterationHelper.h"
+#import "IndividualReviewViewController.h"
 
 
 @interface IndividualBookViewController ()
@@ -28,7 +29,6 @@
 @synthesize releaseValue = _releaseValue;
 @synthesize authorValue = _authorValue;
 @synthesize publisherValue = _publisherValue;
-@synthesize reviewValue = _reviewValue;
 @synthesize book = _book;
 
 #pragma mark - setupView
@@ -95,14 +95,6 @@
     self.publisherValue.text = publisherString;
     
     
-    NSMutableString *reviewString = [NSMutableString string];
-    NSArray *reviewArray = [self.book.reviews allObjects];
-    for (Review *review in reviewArray) {
-        [reviewString appendFormat:@"%@, %@", review.rating];
-    }
-    self.reviewValue.text = reviewString;
-    
-    
     NSDateFormatter *currentDate = [[[NSDateFormatter alloc] init]autorelease];
     [currentDate setDateFormat:@"dd-MM-yyyy"];
     NSString *stringFromDate = [currentDate stringFromDate:self.book.releaseDate];
@@ -131,17 +123,17 @@
         [publisherString stringByAppendingFormat:@""];;
     }
     self.publisherValue.text = publisherString;
-    
-    
-    NSMutableString *reviewString = [NSMutableString string];
-    NSArray *reviewArray = [self.book.reviews allObjects];
-    for (Review *review in reviewArray) {
-        [reviewString stringByAppendingFormat:@""];
-    }
-    self.reviewValue.text = reviewString;
+
     
     self.book.releaseDate = Nil;
     self.book.price = Nil;
+}
+
+-(IBAction)reviewButtonPressed:(id)sender
+{
+    IndividualReviewViewController *controller = [[[IndividualReviewViewController alloc] initWithNibName:@"IndividualReviewView" bundle:Nil]autorelease];
+    [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 #pragma mark - unload outlets
@@ -156,7 +148,6 @@
     self.releaseValue = nil;
     self.authorValue = nil;
     self.publisherValue = nil;
-    self.reviewValue = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
