@@ -7,26 +7,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "iOSProgrammingTask/Classes/Model/Additions/Book+Additions.m"
-         timestampString = "355049538.00479"
+         filePath = "iOSProgrammingTask/Classes/Controllers/EditBookViewController.m"
+         timestampString = "356026013.271559"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "32"
-         endingLineNumber = "32"
-         landmarkName = "+bookForDictionary:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "iOSProgrammingTask/Classes/Model/Additions/Book+Additions.m"
-         timestampString = "355049555.580257"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
-         landmarkName = "+bookForDictionary:"
+         startingLineNumber = "86"
+         endingLineNumber = "86"
+         landmarkName = "-setupBooks"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -34,25 +21,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iOSProgrammingTask/Classes/Controllers/EditBookViewController.m"
-         timestampString = "355849867.259906"
+         timestampString = "356026143.349756"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
+         startingLineNumber = "330"
+         endingLineNumber = "330"
+         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iOSProgrammingTask/Classes/Controllers/EditBookViewController.m"
+         timestampString = "356026008.313465"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "134"
+         endingLineNumber = "134"
          landmarkName = "-setValueForBooks"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "iOSProgrammingTask/Classes/Controllers/EditBookViewController.m"
-         timestampString = "355849867.259906"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "200"
-         endingLineNumber = "200"
-         landmarkName = "-savePressed:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
